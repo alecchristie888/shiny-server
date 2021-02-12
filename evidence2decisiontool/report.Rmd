@@ -1,0 +1,54 @@
+---
+title: "Evidence-2-decision tool summary"
+date: "`r format(Sys.time(), '%d-%B-%Y')`"
+mainfont: Verdana
+output:
+  pdf_document: default
+  word_document:
+    reference_docx: "customrep.docx"
+---
+
+# 1. Define the decision context
+
+## What is the problem?
+`r paste(p(input$action01))`
+
+### Location
+`r paste(p(input$action02))`
+
+### What is the ultimate goal?
+`r paste(p(input$action03))`
+
+### What is the focal target?
+`r paste(p(input$action04))`
+
+## What is the relevant ecological, physical, and social context underlying the decision?
+`r paste(p(input$action05))`
+
+# 2. Gather evidence
+## Possible actions
+`r paste(p(input$action06))`
+
+\newpage
+
+```{r results ="asis", echo=FALSE}
+report_text<-textsummary()
+for(i in 1:length(report_text)){
+  cat(report_text[[i]])
+}
+```
+
+\newpage
+
+# 3. Make an evidence-based decision
+
+## Which action(s), if any, are the best ones to implement to achieve the focal targets and goals you defined at the beginning?
+`r paste(p(input$action20))`
+
+## Which action(s), if any, are _not_ going to be implemented?
+`r paste(p(input$action21))`
+
+## What is your overall decision, what are the next steps, and why?
+`r paste(p(input$action22))`
+
+
