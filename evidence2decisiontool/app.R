@@ -375,7 +375,7 @@ Uncertainty is also important to consider here, in particular to understand whet
     
     content = function(file) {
       library(rmarkdown)
-      out <- render('report.Rmd', switch(
+      out <- render('/srv/shiny-server/evidence2decisiontool/report.Rmd', switch(
         input$format,
         PDF = pdf_document(), HTML = html_document(), Word = word_document()
       ))
@@ -393,7 +393,7 @@ Uncertainty is also important to consider here, in particular to understand whet
     
     content = function(file) {
       library(rmarkdown)
-      out <- render('reporteg.Rmd', switch(
+      out <- render('/srv/shiny-server/evidence2decisiontool/reporteg.Rmd', switch(
         input$formateg,
         PDF = pdf_document(), HTML = html_document(), Word = word_document()
       ))
