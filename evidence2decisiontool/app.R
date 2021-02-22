@@ -16,7 +16,7 @@ ui <- function(request){fluidPage(
   titlePanel(title = "Evidence-to-Decision tool"),
   sidebarLayout(
     sidebarPanel(
-      strong(paste("Warning: Please ensure you click bookmark to save your work. You will get a url link to restore the tool (make sure you keep this safe). Otherwise the app will timeout after 60 minutes. Be aware that the url will become very long as you enter text in the tool - we are working on setting up a server so this won't be needed in future.")),
+      strong(paste("Warning: Please ensure you click bookmark to save your work. You will get a url link to restore the tool (make sure you keep this safe). Otherwise the app will timeout after 60 minutes.")),
       br(),
       br(),
       bookmarkButton(),
