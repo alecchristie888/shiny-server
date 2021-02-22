@@ -1,5 +1,6 @@
 #devtools::install_github("rstudio/shiny")
 library(shiny)
+library(rmarkdown)
 library(knitr)
 library(glue)
 library(tinytex)
