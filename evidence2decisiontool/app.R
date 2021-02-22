@@ -447,5 +447,5 @@ textsummary <- function(){
   
 }
 
-enableBookmarking(store="url")
+enableBookmarking(store="server")
 shinyApp(ui, server)
