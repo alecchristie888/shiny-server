@@ -1,3 +1,11 @@
+##############Need to onrestore() re-insert each tab that was previously made
+##############Need to onbookmark() collect list of each tab that was previously made
+
+
+
+
+
+#devtools::install_github("rstudio/shiny")
 library(shiny)
 library(glue)
 library(tinytex)
@@ -13,7 +21,7 @@ ui <- function(request){fluidPage(
   titlePanel(title = "Evidence-to-Decision tool"),
   sidebarLayout(
     sidebarPanel(
-      strong(paste("Warning: Please ensure you click bookmark to save your work. You will get a url link to restore the tool to its bookmarked state (make sure you keep this safe).")),
+      strong(paste("Warning: Please ensure you click bookmark to save your work. You will get a url link to restore the tool (make sure you keep this safe). Otherwise the app will timeout after 60 minutes. Be aware that the url will become very long as you enter text in the tool - we are working on setting up a server so this won't be needed in future.")),
       br(),
       br(),
       bookmarkButton(),
@@ -226,6 +234,126 @@ Uncertainty is also important to consider here, in particular to understand whet
     
   })
   
+  onBookmark(function(state){
+    state$values$actionnames <- c(do.call(rbind,strsplit(names(input)[grep("action09",names(input))],"9"))[,2])
+    state$values$lastactionadded <- state$values$actionnames[length(state$values$actionnames)]
+  })
+  
+  
+  onRestore(function(state){
+      idstorestore <- state$values$actionnames[-grep(state$values$lastactionadded,state$values$actionnames)]
+      for(i in 1:length(idstorestore)){
+        id <- idstorestore[i]
+        insertTab(inputId = "maintabs",
+                tabPanel(title = glue("2.b-g ",id),
+                         tabsetPanel(
+                           id = paste0("tab",id),
+                           tabPanel(title="2.b Assess effects on the focal target",id=paste0("tab04",id),value=paste0("tab04_val",id),
+                                    br(),
+                                    h4(strong("What does scientific evidence and local knowledge tell us about the desirable and undesirable effects of each action on the focal target?")),
+                                    br(),
+                                    p("Now you can assess the evidence on the likely effectiveness of this action in your local setting. Remember to do this for each action separately using the add or remove action buttons on the side."),
+                                    p("Move through the subtabs to consider what the effectiveness of this action is likely to be for your chosen setting based on evidence and information gathered from scientific evidence and local knowledge. Once you have done this you can consider the costs, acceptability, and feasibility of the action. Then it may be helpful to identify any specific modifications you may wish to make to tailor this conservation action to your local setting. Finally you can summarise what the evidence and information you have gathered suggests about the effectiveness, costs, acceptability, and feasibility of this action.")
+                           ),
+                           tabPanel(title="2.b.i Scientific Evidence and uncertainty",id=paste0("tab05",id),value=paste0("tab05_val",id),
+                                    br(),
+                                    h4(strong("How locally effective is this action likely to be based on the available scientific evidence?")),
+                                    h4(strong("What is the overall certainty (quality) of the scientific evidence?")),
+                                    br(),
+                                    fixedRow(column(textAreaInput(paste0("action07",id),label="Describe action", placeholder="Please expand in more detail on the proposed action here. e.g., Install culverts or tunnels that can act as underpasses for amphibians.",width="100%",height="100%",rows=3),width=6),
+                                             column(textAreaInput(paste0("action08",id),label="Focus of action", placeholder="i.e., species, species group or habitat, e.g., Assist amphibians, particularly Natterjack toads, across the road through constructing culverts or tunnels under the road.",width="100%",height="100%",rows=3),width=6)),
+                                    p("Please describe below where you found evidence for this action and what assessment you have made of its likely effectiveness. You could use the Conservation Evidence assessment for each action if you have used this ",a("website", href="https://www.conservationevidence.com", target="_blank"), " to look for evidence. Or you might have access to reports or studies from your own organisation (i.e., the 'grey literature') that provide useful evidence. Ensure you consider the strength (quality) of the scientific evidence you look at in terms of the study or experimental design used and its local relevance (i.e., are the results likely to apply to your local setting?)."),
+                                    fixedRow(column(width=3,textAreaInput(paste0("action09",id),label="Evidence sources considered",placeholder="e.g., Conservation Evidence, systematic reviews, reports.",width="200%",height="200%",rows=4))),
+                                    fixedRow(column(textAreaInput(paste0("action10",id),label="Detailed assessment of evidence",placeholder="This action was assessed as likely to be beneficial on Conservation Evidence by a panel of experts. Several studies found...",
+                                                                  width="200%",height="200%",rows=4),width=12)),
+                                    fixedRow(column(width=12,textAreaInput(paste0("action11",id),label="Summarise assessment of evidence",placeholder="Overall, based on the sources above this action is likely to be beneficial, but we need to consider how to apply it effectively in our local setting.",
+                                                                           width="200%",height="200%",rows=10))),
+                                    tags$img(src="evidencehierarchy.png", width = 682, height = 305),
+                                    br(),
+                                    paste("An evidence hierarchy tool adapted from "), a("Mupepele et al. (2016)", href="https://doi.org/10.1890/15-0595", target="_blank"), paste("to help assess the strength of evidence from different sources of scientific evidence."),
+                                    br(),
+                                    br()),
+                           tabPanel(title="2.b.ii Local Knowledge and uncertainty",id=paste0("tab06",id),value=paste0("tab06_val",id),
+                                    br(),
+                                    h4(strong("How locally effective is this action likely to be based on local knowledge?")),
+                                    h4(strong("What is the overall certainty (quality) of local knowledge?")),
+                                    p("e.g., Have you attempted this action yourself in the past? Are there any descriptive notes or reports from your organisation that can help? Do local stakeholders have any information or local knowledge you can integrate?"),
+                                    br(),
+                                    h4("Explicit knowledge"),p("Explicit local knowledge is evidence that is documented, but typically not peer-reviewed or unpublished, and may often take the form of descriptive case studies or anecdotes from practitioners. Try to critically assess the confidence you have in this evidence (i.e., how much expertise does the person offering the local knowledge have?)"),
+                                    fixedRow(column( textAreaInput(paste0("action12",id),label="",placeholder="The last ranger sent me a photo and some notes on a previous trial of a tunnel under the old road, that has since been resurfaced and rerouted, when it was first built didn't record any Natterjack toads using it over a two year period.",width="200%",height="200%",rows=2),width=12)),
+                                    br(),
+                                    h4("Tacit knowledge"),p("Tacit or 'soft' local knowledge is evidence that is not documented and typically includes a knowledge holder's intuition, wisdom, and values. Try to think critically about the confidence and certainty you have in this evidence."),
+                                    fixedRow(column( textAreaInput(paste0("action13",id),label="",placeholder="I have never seen them use any Natterjack toads using tunnels and culverts in other places on this reserve.",width="200%",height="200%",rows=2),width=12)),
+                                    br()),
+                           tabPanel(title="2.c.i Assess financial and resource-based costs",id=paste0("tab07",id),value=paste0("tab07_val",id),
+                                    br(),
+                                    h5(strong("How much does each action cost and what are its resource requirements?")),
+                                    br(),
+                                    p("Resource requirements and financial costs form the core of assessing the cost-effectiveness of each action. These can be broadly defined as the resources and finances required to implement a conservation action."),
+                                    br(),
+                                    p("It is good practice to ensure estimates of cost include the direct costs of implementation (including labour, time, consumables, overheads and equipment) and possibly changes in future finances predicted as a result of the action including opportunity costs (i.e., loss of income) and costs of future management and monitoring. Any cost benefits, for example solving a problem (e.g., removing an invasive species) and not having to pay recurrent costs, can also be considered. Cost information can be collated from literature, guidance and accounts but also from experience and knowledge. It is useful to ensure that costs for each action are considered on the same scale so that they are comparable - for example, the cost per unit area or per unit of effort."),
+                                    br(),
+                                    fixedRow(column( textAreaInput(paste0("action14",id),label="Financial costs and resource requirements",placeholder="This is likely to cost a significant amount in time, construction labour, and materials...",width="200%",height="200%",rows=3),width=12))
+                           ),
+                           tabPanel(title="2.c.ii Assess the non-financial and non-target costs and benefits",id=paste0("tab08",id),value=paste0("tab08_val",id),
+                                    br(),
+                                    h5(strong("What are the wider non-financial costs and benefits of implementing this action? What are the costs and benefits for non-target species, habitats, and stakeholders?")),
+                                    br(),
+                                    p("Non-financial costs and benefits are the wider undesirable and desirable effects of the action on species, habitats, and stakeholders that are not the focus of the action. Costs may include socio-cultural considerations if the action did not target socio-cultural outcomes; for example, considering whether using pesticides, excluding access, or removing invasive species may have 'reputational costs' to the practitioner, stakeholders, or their organisations (i.e., has a negative impact on how they are perceived by the general public or other groups). "),
+                                    br(),
+                                    fixedRow(column( textAreaInput(paste0("action15",id),label="Non-financial, non-target costs and benefits",placeholder="Tunnels and culverts could cause the deaths of other species of amphibians and animals, but if successful could also save many other species from suffering road mortality...",width="200%",height="200%",rows=3),width=12))
+                           ),
+                           tabPanel(title="2.d Assess acceptability",id=paste0("tab09",id),value=paste0("tab09_val",id),
+                                    br(),
+                                    h5(strong("Are the effects of implementing this action acceptable to you and to the key stakeholders you are considering?")),
+                                    br(),
+                                    p("Carefully consider whether it is acceptable to implement this action - do the outcomes of this action align to the values held by yourself and key stakeholders? Before you decide, it may be helpful to identify the major relevant values held by yourself and key stakeholders."),
+                                    br(),
+                                    fixedRow(column(textAreaInput(paste0("action16",id),label="Acceptability",placeholder="If the tunnels and culverts cause many deaths of amphibians then our reputation could suffer. This is likely to be unacceptably risky in this regard...",width="200%",height="200%",rows=2),width=12))
+                           ),
+                           tabPanel(title="2.e Assess feasibility",id=paste0("tab10",id),value=paste0("tab10_val",id),
+                                    br(),
+                                    h5(strong("Can this action be successfully accomplished and properly implemented?")),
+                                    br(),
+                                    p("Assessing the feasibility of actions involves considering both the costs and acceptability of the action to key stakeholders. For example, resistance to the action from key stakeholders will be important if cooperation is a part key of its success and so if the action is likely to be unacceptable to key stakeholders, its feasibility is also likely to be low. Considering access or availability of equipment, resources, or staff to undertake a management action will also be important; for example, an action may not be feasible if the equipment needed cannot be moved to the location of interest. Feasibility may also involve considering the costs associated with each action, such as whether the action exceeds a strict budget or will be able to be approved by any stakeholders that must agree to its implementation."),
+                                    br(),
+                                    p("Carefully consider whether it is feasible to implement this action."),
+                                    fixedRow(column(textAreaInput(paste0("action17",id),label="Feasibility",placeholder="We would need to get permission to install these structures under the road, which could take time....",width="200%",height="200%",rows=2),width=12))
+                           ),
+                           tabPanel(title="2.f Identify possible modifications",id=paste0("tab11",id),value=paste0("tab11_val",id),
+                                    br(),
+                                    h5(strong("How can the action be modified based on the previous evidence gathered?")),
+                                    br(),
+                                    p("By assessing the evidence from different sources on effectiveness, costs, acceptability, and feasibility of the action, modifications can be considered that might improve it. For example, there may be strong evidence from the scientific literature to suggest that creating certain habitats for great crested newts and white-faced darters will be beneficial, but a practitioner's explicit or tacit local knowledge also suggests that these species have slightly different habitat preferences in this region, and so a modification to this action may be necessary for it to be locally effective. Or an action such as an education campaign may not be acceptable to a key stakeholder if it is designed in a certain way, so modifications are necessary to ensure the action is acceptable. A structural action may also be too expensive to implement using certain materials and to be more cost-effective and ultimately more feasible, the action must be modified by using cheaper materials."),
+                                    br(),
+                                    fixedRow(column(textAreaInput(paste0("action18",id),label="Consider effectiveness of modificiations",placeholder="We could try certain designs of culverts and tunnels that limit mortality...",width="200%",height="200%",rows=2),width=12)),
+                                    br()),
+                           
+                           tabPanel(title="2.g Summarise evidence, information, and uncertainty for this action",id=paste0("tab12",id),value=paste0("tab12_val",id),
+                                    br(),
+                                    h5(strong("How likely is this action to be locally effective based on all the evidence and information you have gathered?")),
+                                    h5(strong("What is the overall level of uncertainty associated with these conclusions?")),
+                                    br(),
+                                    p("Once the previous steps have been considered, it may be useful to summarise the likely local effectiveness of each action (whether modified or not), and the important costs, acceptability, and feasibility considerations that come with them. This draws together all the evidence previously gathered so that an evidence-based decision can be made in the next step, considering the relative advantages and disadvantages of each action alongside each other.
+                                      Uncertainty is also important to consider here, in particular to understand whether the evidence that has been gathered is sufficient in its reliability and relevance to make robust conclusions. It is also important to consider if there is conflicting evidence from different sources - for example, how much trust can be placed in the evidence drawn from the scientific literature versus evidence drawn from local knowledge?"),
+                                    br(),
+                                    fixedRow(column(textAreaInput(paste0("action19",id),label="Summarise all the evidence for action",placeholder="Overall, this action may be an effective action for us to use but could have negative impacts on amphibians that make this action unacceptably risky - not only in terms of damage to wildlife, but also to the organisation's reputation even if the design of the culverts and tunnels was modified. The installation of these structures will also take time and require extensive permissions, alongside costing a substantial amount, so this is also unlikely to be a feasible action to implement.",width="200%",height="200%",rows=2),width=12))
+                                    )
+                           
+                         )
+                         
+                         
+                ),target="tab13_val",position=c("before"),select=TRUE)
+      }
+      
+    
+    
+    
+  })
+  
+  
+  
+  
   observeEvent(input$remove, {
     id <- input$newactionnamerem
     removeTab(inputId = "maintabs", target = paste0("2.b-g ",id), session=session)
@@ -296,8 +424,8 @@ textsummary <- function(){
     idlistalt <- updateidlist()
     if(length(idlist)!=length(idlistalt)){idlist <- idlistalt}
     
-    if(((length(idlist)-16)/14)>0){
-    lapply(1:(((length(idlist)-16)/14)), ###########need to change these numbers if update rest of code and numbers of inputs!
+    if(((length(idlist)-17)/14)>0){
+    lapply(1:(((length(idlist)-17)/14)), ###########need to change these numbers if update rest of code and numbers of inputs!
                         function(i){
                           cat("# ",unlist(strsplit(idlist[grep("action07",idlist)][i],"7"))[2],"  \n  \n")
                           cat("## Describe action  \n",input[[idlist[grep("action07",idlist)][i]]],"  \n  \n")
@@ -319,12 +447,12 @@ textsummary <- function(){
                           cat("\\newpage  \n  \n")
                         })
     }
-    if(((length(idlist)-16)/14)==0){
+    if(((length(idlist)-17)/14)==0){
       cat("Please add some actions to display them in this report.")
     }
     }
   
 }
 
-enableBookmarking(store="server")
+enableBookmarking(store="url")
 shinyApp(ui, server)
