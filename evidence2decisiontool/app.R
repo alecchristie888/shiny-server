@@ -1,10 +1,3 @@
-##############Need to onrestore() re-insert each tab that was previously made
-##############Need to onbookmark() collect list of each tab that was previously made
-
-
-
-
-
 #devtools::install_github("rstudio/shiny")
 library(shiny)
 library(glue)
