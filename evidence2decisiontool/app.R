@@ -15,7 +15,7 @@ ui <- function(request){fluidPage(
   titlePanel(title = "Evidence-to-Decision tool"),
   sidebarLayout(
     sidebarPanel(
-      strong(paste("Warning: Please ensure you click bookmark to save your work. You will get a url link to restore the tool (make sure you keep this safe). Otherwise the app will timeout after 60 minutes.")),
+      strong(paste("Warning: Please ensure you click bookmark to save your work. The url will update in your browser each time you do this (do not refresh or leave the page before doing this or you will lose work).")),
       br(),
       br(),
       bookmarkButton(),
@@ -419,7 +419,7 @@ server <- function(input, output, session) {
       cat("Please add some actions to display them in this report.")
     }
   }
-  
+  onBookmarked(updateQueryString)
   }
 
 enableBookmarking(store="server")
