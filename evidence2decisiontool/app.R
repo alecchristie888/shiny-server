@@ -15,7 +15,7 @@ ui <- function(request){fluidPage(
   titlePanel(title = "Evidence-to-Decision tool"),
   sidebarLayout(
     sidebarPanel(
-      strong(paste("Warning: Please ensure you click bookmark to save your work. The url will update in your browser each time you do this (do not refresh or leave the page before doing this or you will lose work).")),
+      strong(paste("Warning: Please ensure you click bookmark to save your work. The url will update in your browser each time you do this (do not refresh or leave the page before doing this or you will lose work). You may wish to copy the url to a safe place.")),
       br(),
       br(),
       bookmarkButton(),
@@ -23,7 +23,7 @@ ui <- function(request){fluidPage(
       br(),
       br(),
       strong(p("Add and remove actions")),
-      p("Once you get to tab '2.a Identify possible actions', to continue the process you need to add some actions using the panel below to assess the evidence for each action. This will bring up several subtabs under '2.b-g. <YOUR ACTION NAME HERE>)'."),
+      p("Once you get to section '2.a Identify possible actions' (within tab '2. Gather Evidence'), you need to add some actions using the panel below to continue the process and assess the evidence for each one. Each time you add an action, you will create a new minitab below section 2.a for you to fill in."),
       textInput("newactionname","Name of action to add", value=NULL, placeholder ="Install culverts or tunnels as road crossings"),
       actionButton("add", "Add this action"),
       br(),
@@ -44,7 +44,7 @@ ui <- function(request){fluidPage(
                               }
                             "
                           ),
-                          h3("What's this tool for?"),
+                          h4("What's this tool for?"),
                           #textOutput("numids"),
                           paste("The Evidence-to-Decision tool is designed to help you combine the available scientific evidence (e.g., from"),
                           a("Conservation Evidence,", href="https://www.conservationevidence.com", target="_blank"), 
@@ -55,8 +55,7 @@ ui <- function(request){fluidPage(
                           tags$img(src="image3.png", width = 750, height = 780)
                           ),
                  tabPanel("1. Define the decision context",id="tab02",value='tab02_val',
-                          br(),h4("Define the decision or problem to be considered and the context behind it"),
-                          br(),
+                          h4("Define the decision or problem to be considered and the context behind it"),
                           p("It is important to explicitly define and describe the context surrounding the decision or problem that is being considered. This includes the problem or direct threat being tackled, the focal target and ultimate goal of any action(s) (i.e., desired outcomes on certain species or groups of people) to be taken and important socio-ecological and physical contextual information (e.g., habitat types, species present, climate, location, background on relevant stakeholders), as well as constraints which may influence the decision (e.g., regulatory structures/legislation, budget available, personal/organisational values)."),
                           fixedRow(column( textAreaInput("action01",label="What is the problem?",
                                                          placeholder="Large numbers of amphibians are being killed when crossing a road that runs through part of the reserve.",width="200%",height="200%",rows=3),width=12)),
@@ -69,7 +68,6 @@ ui <- function(request){fluidPage(
                                                          placeholder="The road was built in 2017 and since then our monitoring and anectodotal evidence has suggested that a substantial proportion of amphibians are being killed on a key section of the road. We believe this may be a major factor behind the continued decline of a population of Natterjack toads (Epidalea calamita) despite our best efforts to provide suitable habitat. This toad is a key species we need to protect due to their wider national decline. We have a keen group of volunteers who can help with the work. The road is owned and maintained by the local council.",width="200%",height="200%",rows=3),width=12))
                  ),
                  tabPanel("2. Gather evidence",id="tab03",value='tab03_val',
-                          br(),
                           h5(strong("What evidence is available and what does it suggest about the action(s) that should be taken to address the problem?")),
                           p("Information can now be gathered to assess which action(s) to take to achieve the focal targets and goals defined in the previous tab (1. Define the decision context). This process starts with identfying possible actions to address your problem (e.g., different management actions) in the next tab (2.a), and then considering various types of evidence and information on the effectiveness, costs, acceptability, and feasibility of each action (one at a time - use the function on the side to add or remove different actions to reveal this tab). Once evidence and information has been gathered and assessed, you can move to tab '3. Make an evidence-based decision' to draw together what you have found to summarise and justify your decision and next steps. All the information that you enter here will be used to create a downloadable summary report (you can view an example in the final tab)."),
                           br(),
@@ -86,12 +84,11 @@ ui <- function(request){fluidPage(
                  tabPanel(title="3. Make an evidence-based decision",id="tab13",value='tab13_val',
                           #                         br(),
                           #                         DTOutput("summtab"),
-                          br(),
                           p("Using the accumulated evidence, the relative advantages and disadvantages of each modified action can be compared and related back to the original decision or problem being considered (in Step 1. Define the decision context). This involves weighing up how locally effective, cost-effective, acceptable, and feasible each action and whether its implementation is justified."),
                           p("In a rapid decision-making process, you could narrow down which actions to implement in several ways. For example, there may often be strict limits for the amount of money available, and so actions that are likely to substantially exceed these limits can be discounted. Actions that are expensive and less effective than comparable alternatives (i.e., with very low relative cost-effectiveness) may also not be considered any further. Actions with the same or lower relative costs but greater effectiveness, or with the same relative effectiveness and lower costs are likely to be the ones considered further as they can be justified on the grounds of cost-effectiveness."),
                           p("Justifiable actions to implement may be narrowed down further by rejecting actions that are clearly unacceptable to yourself or key stakeholders. Similarly, actions that are clearly not feasible to implement may also be rejected. Considering previously gathered evidence on cost-effectiveness, acceptability, and feasibility will be important to making these judgments. If you have more time and resources, it might be useful to undertake a more detailed assessment of costs and cost-effectiveness (e.g., multi-criteria decision analysis). But here, as we are aiming to make evidence-based decisions more rapid, you could quickly place the actions in a prioritised order from most suitable to least suitable based on local cost-effectiveness, acceptability, and feasibility."),
                           br(),
-                          h5("Reflecting on the problem you face and the evidence and information you have gathered, what is your decision and why?"),
+                          h5(strong("Reflecting on the problem you face and the evidence and information you have gathered, what is your decision and why?")),
                           br(),
                           h5(strong("Which action(s), if any, are the best ones to implement to achieve the focal targets and goals you defined at the beginning?")),
                           fixedRow(column( textAreaInput("action20",label="Name and justify your choices.",placeholder="Install barrier fencing along roads: This action has been shown to be effective from the evidence I have considered if it is implemented properly. The costs will be less than installing culverts or tunnels, and it should take less time to get permissions to install the fencing along the road. If we target the fencing at strategic positions, and make it high enough so Natterjack toads not climb over it, we can funnel them to natural watercourses underneath the road.",width="200%",height="200%",rows=3),width=12)),
