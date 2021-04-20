@@ -8,7 +8,7 @@ output:
     reference_docx: "customrep.docx"
 ---
 
-# 1. Define the decision context
+# 1. Define the Decision Context
 
 ## What is the problem?
 `r paste(p(input$action01))`
@@ -25,7 +25,7 @@ output:
 ## What is the relevant ecological, physical, and social context underlying the decision?
 `r paste(p(input$action05))`
 
-# 2. Gather evidence
+# 2. Gather Evidence
 ## Possible actions
 `r paste(p(input$action06))`
 
@@ -40,7 +40,7 @@ for(i in 1:length(report_text)){
 
 \newpage
 
-# 3. Make an evidence-based decision
+# 3. Make an Evidence-Based Decision
 
 ## Which action(s), if any, are the best ones to implement to achieve the focal targets and goals you defined at the beginning?
 `r paste(p(input$action20))`
