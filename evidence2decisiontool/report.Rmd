@@ -22,11 +22,11 @@ output:
 ### What is the focal target?
 `r paste(p(input$action04))`
 
-## What is the relevant ecological, physical, and social context underlying the decision?
+## What is the relevant ecological, physical, and social context underlying the decision? What constraints are there on your decision-making?
 `r paste(p(input$action05))`
 
 # 2. Gather Evidence
-## Possible actions
+## Potential actions
 `r paste(p(input$action06))`
 
 \newpage
@@ -41,11 +41,67 @@ for(i in 1:length(report_text)){
 \newpage
 
 # 3. Make an Evidence-Based Decision
+## Summary assessment table for each action 
+```{r chunklabel, dev='png', fig.align="left", fig.dim=c(3,0.5),out.width="100%",out.height="100%",dpi=300,echo=FALSE, cache=FALSE, warning = FALSE, message = FALSE, tidy=TRUE} 
+library(DT) 
+library(webshot) 
+if(is.null(webshot:::find_phantom())){webshot::install_phantomjs()} 
+idlist <- updateidlist$data
+if(length(idlist)>0){
+    actnames<-lapply(1:length(idlist),
+                       function(i){c(idlist[i],
+                                     input[[glue("actioneff",idlist[i])]],
+                                     input[[glue("actioncost1",idlist[i])]],
+                                     input[[glue("actioncost2",idlist[i])]],
+                                     input[[glue("actionacc",idlist[i])]],
+                                     input[[glue("actionfeas",idlist[i])]],
+                                     input[[glue("actionmod",idlist[i])]],
+                                     input[[glue("actioneffcert",idlist[i])]],
+                                     input[[glue("actioncost1cert",idlist[i])]],
+                                     input[[glue("actioncost2cert",idlist[i])]],
+                                     input[[glue("actionacccert",idlist[i])]],
+                                     input[[glue("actionfeascert",idlist[i])]],
+                                     input[[glue("actionmodcert",idlist[i])]]
+                                     )})
+      
+    table1 <- data.frame(do.call(rbind,actnames))
+    tablecolstocolour <- c("Local Effectiveness", "Financial and resource costs", "Wider non-target costs, risks, and benefits", "Acceptability","Feasibility","Modifications")
+    colnames(table1)<- c("Actions","Local Effectiveness", "Financial and resource costs", "Wider non-target costs, risks, and benefits", "Acceptability","Feasibility","Modifications",
+                         "Local Effectiveness Certainty", "Financial and resource costs Certainty", "Wider non-target costs, risks, and benefits Certainty", "Acceptability Certainty","Feasibility Certainty","Modifications Certainty")
+    datatable(table1,rownames=FALSE,height="100%",
+              extensions=c('ColReorder','Responsive','FixedHeader'),
+              options = list(
+                fixedHeader = TRUE,
+                scrolly = TRUE,
+                colReorder = TRUE,
+                columnDefs = list(list(className = 'dt-center', targets = 0:6),list(visible=FALSE,targets=7:12)) # columns aligment to center, javascript starts at 0 not 1!
+              ),
+              editable="cell"
+    ) %>% formatStyle(columns="Local Effectiveness", valueColumns="Local Effectiveness Certainty", backgroundColor = styleEqual(c("Very low","Low","Moderate","High","Unsure"),c("#FFFFFF","#F5F5F5","#FFFFE0","#FFD700","#FFFFFF")))%>%
+     formatStyle(columns="Financial and resource costs", valueColumns="Financial and resource costs Certainty", backgroundColor = styleEqual(c("Very low","Low","Moderate","High","Unsure"),c("#FFFFFF","#F5F5F5","#FFFFE0","#FFD700","#FFFFFF")))%>%
+      formatStyle(columns="Wider non-target costs, risks, and benefits", valueColumns="Wider non-target costs, risks, and benefits Certainty", backgroundColor = styleEqual(c("Very low","Low","Moderate","High","Unsure"),c("#FFFFFF","#F5F5F5","#FFFFE0","#FFD700","#FFFFFF")))%>%
+        formatStyle(columns="Acceptability", valueColumns="Acceptability Certainty", backgroundColor = styleEqual(c("Very low","Low","Moderate","High","Unsure"),c("#FFFFFF","#F5F5F5","#FFFFE0","#FFD700","#FFFFFF")))%>%
+          formatStyle(columns="Feasibility", valueColumns="Feasibility Certainty", backgroundColor = styleEqual(c("Very low","Low","Moderate","High","Unsure"),c("#FFFFFF","#F5F5F5","#FFFFE0","#FFD700","#FFFFFF")))%>%
+            formatStyle(columns="Modifications", valueColumns="Modifications Certainty", backgroundColor = styleEqual(c("Very low","Low","Moderate","High","Unsure"),c("#FFFFFF","#F5F5F5","#FFFFE0","#FFD700","#FFFFFF")))
+    }
+if(length(idlist)==0){
+    table1 <- data.frame(cbind(rep("Start assessing actions in the tool to display a summary output here."),"","","","","",""))
+    colnames(table1)<- c("Actions","Local Effectiveness", "Financial and resource costs", "Wider non-target costs, risks, and benefits", "Acceptability","Feasibility","Modifications")
+    datatable(table1,rownames=FALSE,height="100%",
+              extensions=c('ColReorder','Responsive','FixedHeader'),
+              options = list(
+                fixedHeader = TRUE,
+                scrolly = TRUE,
+                colReorder = TRUE),
+              editable="cell"
+    )
+  }
+```
 
-## Which action(s), if any, are the best ones to implement to achieve the focal targets and goals you defined at the beginning?
+## Which action(s), if any, are the best ones to implement to achieve the ultimate goal(s) you defined at the beginning? Name and justify your choices.
 `r paste(p(input$action20))`
 
-## Which action(s), if any, are _not_ going to be implemented?
+## Which action(s) should not be implemented? Name and justify your choices.
 `r paste(p(input$action21))`
 
 ## What is your overall decision, what are the next steps, and why?

@@ -23,11 +23,11 @@ Prevent and reverse local decline of Natterjack toads.
 ### What is the focal target?
 Natterjack toad (Epidalea calamita) populations.
 
-## What is the relevant ecological, physical, and social context underlying the decision?
+## What is the relevant ecological, physical, and social context underlying the decision? What constraints are there on your decision-making?
 The road was built in 2017 and since then our monitoring and anecdotal evidence has suggested that a substantial proportion of amphibians are being killed on a key section of the road. We believe this may be a major factor behind the continued decline of a population of Natterjack toads (Epidalea calamita) despite our best efforts to provide suitable habitat. This toad is a key species we need to protect due to their wider national decline.
 
 # 2. Gather Evidence
-## Possible actions
+## Potential actions
 1. Install culverts or tunnels as road crossings.
 2. Install barrier fencing along roads.
 3. Use humans to assist migrating amphibians across roads.
@@ -64,7 +64,7 @@ I have never seen them use any Natterjack toads using tunnels and culverts in ot
 ### Financial costs and resource requirements
 This is likely to cost a significant amount in time, construction labour, and materials.
 
-### Non-financial and non-target costs and benefits
+### Non-financial and non-target costs, risks, and benefits
 Tunnels and culverts could cause the deaths of other species of amphibians and animals, but if successful could also save many other species from suffering road mortality.
 
 ## Acceptability
@@ -111,7 +111,7 @@ For this to be an effective action on the reserve, we would need to use a signif
 ### Financial costs and resource requirements
 If the fencing has to be very long to prevent amphibians simply going around it, the costs could be moderately high - particularly if the fence itself needs to be quite tall and made of premium materials. However, if we target stragetic points this could limit the amount of fencing we need to channel amphibians into natural watercourses.
 
-### Non-financial and non-target costs and benefits
+### Non-financial and non-target costs, risks, and benefits
 The fences may prevent other wildlife crossing the range in dangerous places, but could also funnel them into certain areas that may increase their road mortality.
 
 ## Acceptability
@@ -154,7 +154,7 @@ In the past frog and toad patrols have helped in the local area to save 1000s of
 ### Financial costs and resource requirements  
 It would be relatively cheap in monetary terms to conduct if we are able to get volunteers to participate, although it would require a significant investment of their time, at unsociable hours of the day, that could be better used elsewhere on the reserve.
 
-### Non-financial and non-target costs and benefits
+### Non-financial and non-target costs, risks, and benefits
 Volunteers may become disenfranchised from undertaking this hard work at unsociable hours. We may be able to assist the migration of other amphibians and animals.
 
 ## Acceptability
@@ -173,10 +173,12 @@ The action does not seem likely to be locally effective and unlikely to be feasi
 
 # 3. Make an Evidence-Based Decision
 
+## Summary assessment table for each action 
+
 ## Which action(s), if any, are the best ones to implement to achieve the focal targets and goals you defined at the beginning?
 __Install barrier fencing along roads__: This action has been shown to be effective from the evidence I have considered if it is implemented properly. The costs will be less than installing culverts or tunnels, and it should take less time to get permissions to install the fencing along the road. If we target the fencing at strategic positions, and make it high enough so Natterjack toads not climb over it, we can funnel them to natural watercourses underneath the road.
 
-## Which action(s), if any, are _not_ going to be implemented? 
+## Which action(s) should not be implemented? Name and justify your choices.
 __Use humans to assist migrating amphibians across roads__: This is because based on my assessment of the evidence this action is unlikely to be effective on the reserve, as it has shown to not prevent population declines elsewhere and might divert volunteers away from activities that are more important.
 
 __Install culverts or tunnels as road crossings__: This is because although this could be an effective action based on the scientific evidence, it can lead to mortality of amphibians within the culverts and tunnels. It would also cost a significant amount of money which would likely be beyond our budget, and would also take a lot of time to get permission to construct and build.
