@@ -242,8 +242,8 @@ The action does not seem likely to be locally effective and unlikely to be feasi
 \pagebreak
 
 # 3. Make an Evidence-Based Decision
-
 ## Summary assessment table for each action 
+Table legend: White = Very low certainty or unsure. Pale yellow = Low certainty. Yellow = Moderate certainty. Gold = High certainty.
 ```{r chunklabel, dev='png', fig.align="left", fig.dim=c(3,0.5),out.width="100%",out.height="100%",dpi=300,echo=FALSE, cache=FALSE, warning = FALSE, message = FALSE, tidy=TRUE} 
 library(DT) 
 library(webshot) 
@@ -257,7 +257,7 @@ if(is.null(webshot:::find_phantom())){webshot::install_phantomjs()}
     tablecolstocolour <- c("Local Effectiveness", "Cost-effectiveness", "Wider non-target costs, risks, and benefits", "Acceptability","Feasibility","Modification potential")
     colnames(table1)<- c("Action","Local Effectiveness", "Cost-effectiveness", "Wider non-target costs, risks, and benefits", "Acceptability","Feasibility","Modification potential",
                          "Local Effectiveness Certainty", "Cost-effectiveness Certainty", "Wider non-target costs, risks, and benefits Certainty", "Acceptability Certainty","Feasibility Certainty","Modification potential Certainty")
-    colvalscert <- c("#FFFFFF","#F5F5F5","#FFFFE0","#FFD700","#FFFFFF")
+    colvalscert <-  c("#FFFFFF","#FFFFCC","#FFFF80","#FFCC00","#FFFFFF")
     colvalnames <- c("Very low","Low","Moderate","High","Unsure")
     datatable(table1,rownames=FALSE,height="100%",
               extensions=c('ColReorder','Responsive','FixedHeader'),

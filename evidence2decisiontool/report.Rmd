@@ -32,6 +32,7 @@ output:
 `r paste(p(input$action05))`
 
 # 2. Gather Evidence
+
 ## Potential actions
 `r paste(p(input$action06))`
 
@@ -48,6 +49,7 @@ for(i in 1:length(report_text)){
 
 # 3. Make an Evidence-Based Decision
 ## Summary assessment table for each action 
+Table legend: White = Very low certainty or unsure. Pale yellow = Low certainty. Yellow = Moderate certainty. Gold = High certainty.
 ```{r chunklabel, dev='png', fig.align="left", fig.dim=c(3,0.5),out.width="100%",out.height="100%",dpi=300,echo=FALSE, cache=FALSE, warning = FALSE, message = FALSE, tidy=TRUE} 
 library(DT) 
 library(webshot) 
@@ -70,7 +72,7 @@ if(length(idlist)>0){
                                               "Modification potential Certainty"=input[[glue("actionmodcert",idlist[i])]]
                                      )})
     table1 <- data.table(do.call(rbind,actnames))
-    colvalscert <- c("#FFFFFF","#F5F5F5","#FFFFE0","#FFD700","#FFFFFF")
+    colvalscert <-  c("#FFFFFF","#FFFFCC","#FFFF80","#FFCC00","#FFFFFF")
     colvalnames <- c("Very low","Low","Moderate","High","Unsure")
     datatable(table1,rownames=FALSE,height="100%",
               extensions=c('ColReorder','Responsive','FixedHeader'),

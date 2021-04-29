@@ -103,6 +103,7 @@ ui <- function(request){fluidPage(
                  tabPanel(title="3. Make an Evidence-Based Decision",id="tab13",value='tab13_val',
                           br(),
                           h4("Summary assessment table for each action"),
+                          p("Table legend: White = Very low certainty or unsure. Pale yellow = Low certainty. Yellow = Moderate certainty. Gold = High certainty."),
                           DTOutput("testtab"),
                           br(),
                           h4("3.A. Weigh up the evidence for and against different actions"),
@@ -488,7 +489,7 @@ server <- function(input, output, session) {
                                               "Modification potential Certainty"=input[[glue("actionmodcert",idlist[i])]]
                                      )})
     table1 <- data.table(do.call(rbind,actnames))
-    colvalscert <- c("#FFFFFF","#F5F5F5","#FFFFE0","#FFD700","#FFFFFF")
+    colvalscert <- c("#FFFFFF","#FFFFCC","#FFFF80","#FFCC00","#FFFFFF")
     colvalnames <- c("Very low","Low","Moderate","High","Unsure")
     datatable(table1,rownames=FALSE,height="100%",
               extensions=c('ColReorder','Responsive','FixedHeader'),
@@ -540,7 +541,7 @@ server <- function(input, output, session) {
       
       content = function(file) {
         library(rmarkdown)
-          out <- render('/srv/shiny-server/evidence2decisiontool/report.Rmd', switch(
+          out <- render('report.Rmd', switch(
           input$format,
           PDF = pdf_document(), HTML = html_document(), Word = word_document()
         ))
@@ -558,7 +559,7 @@ server <- function(input, output, session) {
       
       content = function(file) {
         library(rmarkdown)
-        out <- render('/srv/shiny-server/evidence2decisiontool/reporteg.Rmd', switch(
+        out <- render('reporteg.Rmd', switch(
           input$formateg,
           PDF = pdf_document(), HTML = html_document(), Word = word_document()
         ))
