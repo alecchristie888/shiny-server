@@ -1,5 +1,5 @@
 ---
-title: "Evidence-2-decision tool summary"
+title: "Evidence-to-decision tool summary"
 date: "`r format(Sys.time(), '%d-%B-%Y')`"
 mainfont: Verdana
 output:
@@ -9,6 +9,12 @@ output:
 ---
 
 # 1. Define the Decision Context
+
+## Name
+`r paste(p(input$reportname))`
+
+## Organisation
+`r paste(p(input$reportorgname))`
 
 ## What is the problem?
 `r paste(p(input$action01))`
@@ -49,51 +55,49 @@ if(is.null(webshot:::find_phantom())){webshot::install_phantomjs()}
 idlist <- updateidlist$data
 if(length(idlist)>0){
     actnames<-lapply(1:length(idlist),
-                       function(i){c(idlist[i],
-                                     input[[glue("actioneff",idlist[i])]],
-                                     input[[glue("actioncost1",idlist[i])]],
-                                     input[[glue("actioncost2",idlist[i])]],
-                                     input[[glue("actionacc",idlist[i])]],
-                                     input[[glue("actionfeas",idlist[i])]],
-                                     input[[glue("actionmod",idlist[i])]],
-                                     input[[glue("actioneffcert",idlist[i])]],
-                                     input[[glue("actioncost1cert",idlist[i])]],
-                                     input[[glue("actioncost2cert",idlist[i])]],
-                                     input[[glue("actionacccert",idlist[i])]],
-                                     input[[glue("actionfeascert",idlist[i])]],
-                                     input[[glue("actionmodcert",idlist[i])]]
+                       function(i){data.table("Action"=idlist[i],
+                                              "Local Effectiveness"=input[[glue("actioneff",idlist[i])]],
+                                              "Cost-effectiveness"=input[[glue("actioncost1",idlist[i])]],
+                                              "Wider non-target costs, risks, and benefits"=input[[glue("actioncost2",idlist[i])]],
+                                              "Acceptability"=input[[glue("actionacc",idlist[i])]],
+                                              "Feasibility"=input[[glue("actionfeas",idlist[i])]],
+                                              "Modification potential"=input[[glue("actionmod",idlist[i])]],
+                                              "Local Effectiveness Certainty"=input[[glue("actioneffcert",idlist[i])]],
+                                              "Cost-effectiveness Certainty"=input[[glue("actioncost1cert",idlist[i])]],
+                                              "Wider non-target costs, risks, and benefits Certainty"=input[[glue("actioncost2cert",idlist[i])]],
+                                              "Acceptability Certainty"=input[[glue("actionacccert",idlist[i])]],
+                                              "Feasibility Certainty"=input[[glue("actionfeascert",idlist[i])]],
+                                              "Modification potential Certainty"=input[[glue("actionmodcert",idlist[i])]]
                                      )})
-      
-    table1 <- data.frame(do.call(rbind,actnames))
-    tablecolstocolour <- c("Local Effectiveness", "Financial and resource costs", "Wider non-target costs, risks, and benefits", "Acceptability","Feasibility","Modifications")
-    colnames(table1)<- c("Actions","Local Effectiveness", "Financial and resource costs", "Wider non-target costs, risks, and benefits", "Acceptability","Feasibility","Modifications",
-                         "Local Effectiveness Certainty", "Financial and resource costs Certainty", "Wider non-target costs, risks, and benefits Certainty", "Acceptability Certainty","Feasibility Certainty","Modifications Certainty")
+    table1 <- data.table(do.call(rbind,actnames))
+    colvalscert <- c("#FFFFFF","#F5F5F5","#FFFFE0","#FFD700","#FFFFFF")
+    colvalnames <- c("Very low","Low","Moderate","High","Unsure")
     datatable(table1,rownames=FALSE,height="100%",
               extensions=c('ColReorder','Responsive','FixedHeader'),
-              options = list(
+              options = list(searching=FALSE, paging=FALSE, info=FALSE,
                 fixedHeader = TRUE,
                 scrolly = TRUE,
                 colReorder = TRUE,
                 columnDefs = list(list(className = 'dt-center', targets = 0:6),list(visible=FALSE,targets=7:12)) # columns aligment to center, javascript starts at 0 not 1!
               ),
               editable="cell"
-    ) %>% formatStyle(columns="Local Effectiveness", valueColumns="Local Effectiveness Certainty", backgroundColor = styleEqual(c("Very low","Low","Moderate","High","Unsure"),c("#FFFFFF","#F5F5F5","#FFFFE0","#FFD700","#FFFFFF")))%>%
-     formatStyle(columns="Financial and resource costs", valueColumns="Financial and resource costs Certainty", backgroundColor = styleEqual(c("Very low","Low","Moderate","High","Unsure"),c("#FFFFFF","#F5F5F5","#FFFFE0","#FFD700","#FFFFFF")))%>%
-      formatStyle(columns="Wider non-target costs, risks, and benefits", valueColumns="Wider non-target costs, risks, and benefits Certainty", backgroundColor = styleEqual(c("Very low","Low","Moderate","High","Unsure"),c("#FFFFFF","#F5F5F5","#FFFFE0","#FFD700","#FFFFFF")))%>%
-        formatStyle(columns="Acceptability", valueColumns="Acceptability Certainty", backgroundColor = styleEqual(c("Very low","Low","Moderate","High","Unsure"),c("#FFFFFF","#F5F5F5","#FFFFE0","#FFD700","#FFFFFF")))%>%
-          formatStyle(columns="Feasibility", valueColumns="Feasibility Certainty", backgroundColor = styleEqual(c("Very low","Low","Moderate","High","Unsure"),c("#FFFFFF","#F5F5F5","#FFFFE0","#FFD700","#FFFFFF")))%>%
-            formatStyle(columns="Modifications", valueColumns="Modifications Certainty", backgroundColor = styleEqual(c("Very low","Low","Moderate","High","Unsure"),c("#FFFFFF","#F5F5F5","#FFFFE0","#FFD700","#FFFFFF")))
+    ) %>% formatStyle(columns="Local Effectiveness", valueColumns="Local Effectiveness Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+     formatStyle(columns="Cost-effectiveness", valueColumns="Cost-effectiveness Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+      formatStyle(columns="Wider non-target costs, risks, and benefits", valueColumns="Wider non-target costs, risks, and benefits Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+        formatStyle(columns="Acceptability", valueColumns="Acceptability Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+          formatStyle(columns="Feasibility", valueColumns="Feasibility Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+            formatStyle(columns="Modification potential", valueColumns="Modification potential Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))
     }
 if(length(idlist)==0){
     table1 <- data.frame(cbind(rep("Start assessing actions in the tool to display a summary output here."),"","","","","",""))
-    colnames(table1)<- c("Actions","Local Effectiveness", "Financial and resource costs", "Wider non-target costs, risks, and benefits", "Acceptability","Feasibility","Modifications")
+    colnames(table1)<- c("Action","Local Effectiveness", "Cost-effectiveness", "Wider non-target costs, risks, and benefits", "Acceptability","Feasibility","Modification potential")
     datatable(table1,rownames=FALSE,height="100%",
               extensions=c('ColReorder','Responsive','FixedHeader'),
-              options = list(
+              options = list(searching=FALSE, paging=FALSE, info=FALSE,
                 fixedHeader = TRUE,
                 scrolly = TRUE,
-                colReorder = TRUE),
-              editable="cell"
+                colReorder = TRUE)
+              
     )
   }
 ```

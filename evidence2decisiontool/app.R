@@ -17,23 +17,23 @@ ui <- function(request){fluidPage(
              windowTitle = "Evidence-to-Decision tool"),
   titlePanel(title = "Evidence-to-Decision tool"),
   sidebarLayout(
-    sidebarPanel(
+    sidebarPanel(width=3,
       h4("Bookmark your work"),
       p("We recommended that you bookmark regularly to save your work. Your browser URL will update each time you do this (leaving the page or refreshing before doing so could lose your work)."),
       bookmarkButton(label="Bookmark", title="Bookmarking your work will create a new unique URL in your browser that saves your work."),
       br(),
       br(),
       h4("Add or remove actions"),
-      tippy("<strong> Name of action to add </strong>", tooltip = "On reaching step '2.a Identify potential actions' you can add actions below to continue the process.", allowHTML=TRUE,placement="top"),
-      textInput("newactionname",label=NULL, value=NULL, placeholder = "e.g., Install culverts or tunnels as road crossings"),
+      fixedRow(column(tippy("<strong> Name of action to add </strong>", tooltip = "On reaching step '2.a Identify potential actions' you can add actions below to continue the process.", allowHTML=TRUE,placement="top"),
+      textInput("newactionname",label=NULL, value=NULL, placeholder = "e.g., Install culverts or tunnels as road crossings"),width=8)),
       actionButton("add", "Add this action"),
       br(),
       br(),
-      tippy("<strong> Name of action to remove </strong>", tooltip = "If you make a mistake in adding an action, you can remove the incorrect name below.", allowHTML=TRUE,placement="top"),
-      textInput("newactionnamerem",label=NULL, value=NULL, placeholder = "e.g., Install barrier fencing along roads"),
+      fixedRow(column(tippy("<strong> Name of action to remove </strong>", tooltip = "If you make a mistake in adding an action, you can remove the incorrect name below.", allowHTML=TRUE,placement="top"),
+      textInput("newactionnamerem",label=NULL, value=NULL, placeholder = "e.g., Install barrier fencing along roads"),width=8)),
       actionButton("remove", "Remove this action")
       ),
-    mainPanel(
+    mainPanel(width=9,
       navbarPage("",id="maintabs",
                  tabPanel("Introduction",id="tab01",value='tab01_val',
                           tags$style(
@@ -56,7 +56,8 @@ ui <- function(request){fluidPage(
                             The tool can also be used to begin thinking about how to tackle major decisions, laying the foundation for a more in-depth decision-making process using other tools and frameworks (e.g., Structured Decision-Making, Multi-Criteria Decision Analysis, or Theory of Change etc.)."), 
                           paste("To begin using the tool, click on 1. Define the Decision Context. Throughout this tool you will be prompted to enter information which will be compiled and documented in a report which you will be able to download in the final step. (If you wish to see an example of what the tool produces, please go to tab 3. Make an Evidence-Based Decision and scroll to the bottom). Download the"), 
                           a("E2D Tool Guide", href="e2dguide.pdf", target="_blank"), paste("for extra guidance. Tips will also appear if you hover over the bold text directly above text boxes in the tool."),
-                          tags$img(src="image3.png", width = 750, height = 780),
+                          br(),
+                          tags$img(src="image3.png", width = 700, height = 780),
                           br(),
                           p("This tool was created by Dr Alec Christie, University of Cambridge. Thank you to all the practitioners who took part in the co-design of this tool, including (in no particular order): Steve Weeks, Alison Ruyter, Rory Harding, and Paul Tinsley-Marshall from the Kent Wildlife Trust; Tom McPherson from Ingleby Farms (also for giving feedback on the manuscript); the Woodland Trust; Peoples’ Trust for Endangered Species; Jon Flanders and Winifred Frick at Bat Conservation International; David O’Brien at NatureScot; Kathy Wormald at Froglife; the Medway Valley Countryside Partnership; Sheffield & Rotherham Wildlife Trust; Bedfordshire, Buckinghamshire, and Oxfordshire Wildlife Trust; Catherine McNicol at Gloucestershire Wildlife Trust. Thanks also to Harriet Downey, Matthew Grainger, Thomas White, Michael Winter, and William Sutherland for their help in producing the tool.")
                           ),
@@ -66,10 +67,14 @@ ui <- function(request){fluidPage(
                             This includes the problem (or direct threat) being tackled, the location the decision affects,
                             the ultimate goal you want to achieve (i.e., the desired outcomes), the focal target of any action (i.e., the species, habitat, or group),
                             and any other relevant contextual information (e.g., socio-ecological factors, constraints on decision-making."),
+                          fixedRow(column(tippy("<strong> Name of decision-maker </strong>", tooltip = "Add you name here to include this in your downloadable report.", allowHTML=TRUE,placement="top"),
+                                          textAreaInput("reportname",label=NULL,width="200%",height="200%",rows=1),width=4)),
+                          fixedRow(column(tippy("<strong> Name of decision-maker's organisation </strong>", tooltip = "Add you organisation's name here to include this in your downloadable report.", allowHTML=TRUE,placement="top"),
+                                          textAreaInput("reportorgname",label=NULL,width="200%",height="200%",rows=1),width=4)),
                           fixedRow(column(tippy("<strong> What is the problem? </strong>", tooltip = "e.g., Large numbers of amphibians are being killed when crossing a road that runs through part of the reserve.", allowHTML=TRUE,placement="top"),
                             textAreaInput("action01",label=NULL,width="200%",height="200%",rows=3),width=12)),
                           fixedRow(column(tippy("<strong> Location </strong>", tooltip = "State the location for the proposed action.", allowHTML=TRUE,placement="top"),
-                            textAreaInput("action02",label=NULL, width="100%",height="100%",rows=1),width=12)),
+                            textAreaInput("action02",label=NULL, width="100%",height="100%",rows=1),width=4)),
                           fixedRow(column(tippy("<strong> What is the ultimate goal? </strong>", tooltip = "e.g., Reduce amphibian mortality but still enable the movement of frogs across the road.", allowHTML=TRUE,placement="top"),
                             textAreaInput("action03",label=NULL,width="200%",height="200%",rows=3),width=12)),
                           fixedRow(column(tippy("<strong> What is the focal target? </strong>", tooltip = "e.g., Prevent the decline of a Natterjack toad (Epidalea calamita) population.", allowHTML=TRUE,placement="top"),
@@ -99,6 +104,7 @@ ui <- function(request){fluidPage(
                           br(),
                           h4("Summary assessment table for each action"),
                           DTOutput("testtab"),
+                          br(),
                           h4("3.A. Weigh up the evidence for and against different actions"),
                           em(strong("Reflecting on the problem you face and the evidence and information you have gathered, what is your decision and why?")),
                           p("Using the accumulated evidence, the relative advantages and disadvantages of each modified action can be compared and related back to the original decision or problem being considered (in Step 1. Define the Decision Context). This involves weighing up how locally effective, cost-effective, acceptable, and feasible each action and whether its implementation is justified."),
@@ -150,9 +156,9 @@ server <- function(input, output, session) {
                        p("Please expand in more detail on the proposed action below, including what the action involves and what the focus of the action is (i.e., a species, group, or habitat - this is not necessarily the focal target you defined earlier as this action could be indirect)."),
                        fixedRow(
                          column(tippy("<strong> Describe action </strong>", tooltip = "e.g., Install culverts or tunnels that can act as underpasses for amphibians.", allowHTML=TRUE,placement="top"),
-                                textAreaInput(paste0("action07",id),label=NULL,width="100%",height="100%",rows=3),width=6),
+                                textAreaInput(paste0("action07",id),label=NULL,width="100%",height="100%",rows=2),width=6),
                          column(tippy("<strong> Focus of action </strong>", tooltip = "e.g., Assist amphibians, particularly Natterjack toads, across the road through constructing culverts or tunnels under the road.",placement="top"),
-                                textAreaInput(paste0("action08",id),label=NULL,width="100%",height="100%",rows=3),width=6)),
+                                textAreaInput(paste0("action08",id),label=NULL,width="100%",height="100%",rows=2),width=6)),
                        h4("2.B. Assess desirable and undesirable effects on the focal target and uncertainty"),
                        strong(em("What do different types of evidence tell us about the desirable and undesirable effects of each action on the focal target? How certain are we of the credibility of this evidence?")),
                        p("In this section you are asked to assess the likely effectiveness of this action within your local decision context (specifically regarding your focal target - there is space later in the tool to assess cost-effectiveness, side-effects, and wider impacts of actions)."),
@@ -170,13 +176,13 @@ server <- function(input, output, session) {
                        br(),
                        fixedRow(
                          column(width=12,tippy("<strong> Evidence sources considered </strong>", tooltip = "e.g., Conservation Evidence, systematic reviews, reports.", allowHTML=TRUE,placement="top"),
-                            textAreaInput(paste0("action09",id),label=NULL,width="200%",height="200%",rows=4))),
+                            textAreaInput(paste0("action09",id),label=NULL,width="200%",height="200%",rows=2))),
                        fixedRow(
                          column(width=12,tippy("<strong> Detailed assessment of evidence </strong>", tooltip = "e.g., This action was assessed as likely to be beneficial on Conservation Evidence by a panel of experts. Several studies found...", allowHTML=TRUE,placement="top"),
-                           textAreaInput(paste0("action10",id),label=NULL,width="200%",height="200%",rows=4))),
+                           textAreaInput(paste0("action10",id),label=NULL,width="200%",height="200%",rows=3))),
                        fixedRow(
                          column(width=12,tippy("<strong> Summarise assessment of evidence </strong>", tooltip = "e.g., Overall, based on the sources above this action is likely to be beneficial, but we need to consider how to apply it effectively in our local setting.", allowHTML=TRUE,placement="top"),
-                            textAreaInput(paste0("action11",id),label=NULL,width="200%",height="200%",rows=4))),
+                            textAreaInput(paste0("action11",id),label=NULL,width="200%",height="200%",rows=2))),
                                            tags$img(src="evidencehierarchy.png", width = 682, height = 305),
                        br(),
                        paste("An evidence hierarchy tool adapted from "), 
@@ -199,7 +205,7 @@ server <- function(input, output, session) {
                            textAreaInput(paste0("action12",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
                        br(),
                        fixedRow(column(width=12,tippy("<h4> Score effectiveness based on scientific literature and undocumented knowledge </h4>", tooltip = "Please select a score based on the evidence gathered. Note you should only consider effectiveness in terms of the focal target (i.e., harmful means harmful to the focal target, not more widely - side-effects are considered later).", allowHTML=TRUE,placement="top"),
-                                       radioButtons(paste0("actioneff",id),choices=c("Harmful","Ineffective","Weakly effective","Moderately effective","Highly effective","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
+                                       radioButtons(paste0("actioneff",id),choices=c("Harmful","Ineffective","Weakly effective","Moderately effective","Highly effective","Trade-off between benefits and harms","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                        fixedRow(column(width=12,tippy("<strong> Score certainty in this score </strong>", tooltip = "Please select a score based on your confidence in the score you have given (and the evidence gathered).", allowHTML=TRUE,placement="top"),
                                        radioButtons(paste0("actioneffcert",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                        br(),
@@ -210,7 +216,7 @@ server <- function(input, output, session) {
                        p("It is good practice to ensure estimates of cost include the direct costs of implementation (including labour, time, consumables, overheads and equipment) and possibly changes in future finances predicted as a result of the action including opportunity costs (i.e., loss of income) and costs of future management and monitoring. Any cost benefits, for example solving a problem (e.g., removing an invasive species) and not having to pay recurrent costs, can also be considered. Cost information can be collated from literature, guidance and accounts but also from experience and knowledge. It is useful to ensure that costs for each action are considered on the same scale so that they are comparable - for example, the cost per unit area or per unit of effort."),
                        fixedRow(
                          column( tippy("<strong> Financial and resource-based cost-effectiveness </strong>", tooltip = "e.g., This is likely to cost a significant amount in time, construction labour, and materials...", allowHTML=TRUE,placement="top"),
-                           textAreaInput(paste0("action13",id),label=NULL,width="200%",height="200%",rows=3),width=12)),
+                           textAreaInput(paste0("action13",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
                        br(),
                        fixedRow(column(width=12,tippy("<h4> Score cost-effectiveness based on financial and resource-based costs </h4>", tooltip = "Please select a score based on the evidence gathered.", allowHTML=TRUE,placement="top"),
                                        radioButtons(paste0("actioncost1",id),choices=c("Harmful","Ineffective","Weakly effective","Moderately effective","Highly effective","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
@@ -221,7 +227,7 @@ server <- function(input, output, session) {
                        p("Non-financial costs and benefits are the wider undesirable and desirable effects of the action on species, habitats, and stakeholders that are not the focus of the action. Costs may include socio-cultural considerations if the action did not target socio-cultural outcomes; for example, considering whether using pesticides, excluding access, or removing invasive species may have 'reputational costs' to the practitioner, stakeholders, or their organisations (i.e., has a negative impact on how they are perceived by the general public or other groups). "),
                        fixedRow(
                          column( tippy("<strong> Non-financial, non-target costs, risks, and benefits </strong>", tooltip = "e.g., Tunnels and culverts could cause the deaths of other species of amphibians and animals, but if successful could also save many other species from suffering road mortality...", allowHTML=TRUE,placement="top"),
-                           textAreaInput(paste0("action14",id),label=NULL,width="200%",height="200%",rows=3),width=12)),
+                           textAreaInput(paste0("action14",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
                        br(),
                        fixedRow(column(width=12,tippy("<h4> Score Non-financial, non-target costs, risks, and benefits </h4>", tooltip = "Please select a score based on the evidence gathered.", allowHTML=TRUE,placement="top"),
                                        radioButtons(paste0("actioncost2",id),choices=c("Negative","Weakly negative","Neutral","Weakly positive","Positive","Trade-off", "Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
@@ -324,7 +330,7 @@ server <- function(input, output, session) {
                            "li a {
                            font-size: 20px;
                            font-weight: bold;
-    }
+                            }
                            "
                          ),
                          br(),
@@ -332,9 +338,9 @@ server <- function(input, output, session) {
                          p("Please expand in more detail on the proposed action below, including what the action involves and what the focus of the action is (i.e., a species, group, or habitat - this is not necessarily the focal target you defined earlier as this action could be indirect)."),
                          fixedRow(
                            column(tippy("<strong> Describe action </strong>", tooltip = "e.g., Install culverts or tunnels that can act as underpasses for amphibians.", allowHTML=TRUE,placement="top"),
-                                  textAreaInput(paste0("action07",id),label=NULL,width="100%",height="100%",rows=3),width=6),
+                                  textAreaInput(paste0("action07",id),label=NULL,width="100%",height="100%",rows=2),width=6),
                            column(tippy("<strong> Focus of action </strong>", tooltip = "e.g., Assist amphibians, particularly Natterjack toads, across the road through constructing culverts or tunnels under the road.",placement="top"),
-                                  textAreaInput(paste0("action08",id),label=NULL,width="100%",height="100%",rows=3),width=6)),
+                                  textAreaInput(paste0("action08",id),label=NULL,width="100%",height="100%",rows=2),width=6)),
                          h4("2.B. Assess desirable and undesirable effects on the focal target and uncertainty"),
                          strong(em("What do different types of evidence tell us about the desirable and undesirable effects of each action on the focal target? How certain are we of the credibility of this evidence?")),
                          p("In this section you are asked to assess the likely effectiveness of this action within your local decision context (specifically regarding your focal target - there is space later in the tool to assess cost-effectiveness, side-effects, and wider impacts of actions)."),
@@ -352,13 +358,13 @@ server <- function(input, output, session) {
                          br(),
                          fixedRow(
                            column(width=12,tippy("<strong> Evidence sources considered </strong>", tooltip = "e.g., Conservation Evidence, systematic reviews, reports.", allowHTML=TRUE,placement="top"),
-                                  textAreaInput(paste0("action09",id),label=NULL,width="200%",height="200%",rows=4))),
+                                  textAreaInput(paste0("action09",id),label=NULL,width="200%",height="200%",rows=2))),
                          fixedRow(
                            column(width=12,tippy("<strong> Detailed assessment of evidence </strong>", tooltip = "e.g., This action was assessed as likely to be beneficial on Conservation Evidence by a panel of experts. Several studies found...", allowHTML=TRUE,placement="top"),
-                                  textAreaInput(paste0("action10",id),label=NULL,width="200%",height="200%",rows=4))),
+                                  textAreaInput(paste0("action10",id),label=NULL,width="200%",height="200%",rows=3))),
                          fixedRow(
                            column(width=12,tippy("<strong> Summarise assessment of evidence </strong>", tooltip = "e.g., Overall, based on the sources above this action is likely to be beneficial, but we need to consider how to apply it effectively in our local setting.", allowHTML=TRUE,placement="top"),
-                                  textAreaInput(paste0("action11",id),label=NULL,width="200%",height="200%",rows=4))),
+                                  textAreaInput(paste0("action11",id),label=NULL,width="200%",height="200%",rows=2))),
                          tags$img(src="evidencehierarchy.png", width = 682, height = 305),
                          br(),
                          paste("An evidence hierarchy tool adapted from "), 
@@ -381,7 +387,7 @@ server <- function(input, output, session) {
                                   textAreaInput(paste0("action12",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
                          br(),
                          fixedRow(column(width=12,tippy("<h4> Score effectiveness based on scientific literature and undocumented knowledge </h4>", tooltip = "Please select a score based on the evidence gathered. Note you should only consider effectiveness in terms of the focal target (i.e., harmful means harmful to the focal target, not more widely - side-effects are considered later).", allowHTML=TRUE,placement="top"),
-                                         radioButtons(paste0("actioneff",id),choices=c("Harmful","Ineffective","Weakly effective","Moderately effective","Highly effective","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
+                                         radioButtons(paste0("actioneff",id),choices=c("Harmful","Ineffective","Weakly effective","Moderately effective","Highly effective","Trade-off between benefits and harms","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                          fixedRow(column(width=12,tippy("<strong> Score certainty in this score </strong>", tooltip = "Please select a score based on your confidence in the score you have given (and the evidence gathered).", allowHTML=TRUE,placement="top"),
                                          radioButtons(paste0("actioneffcert",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                          br(),
@@ -392,7 +398,7 @@ server <- function(input, output, session) {
                          p("It is good practice to ensure estimates of cost include the direct costs of implementation (including labour, time, consumables, overheads and equipment) and possibly changes in future finances predicted as a result of the action including opportunity costs (i.e., loss of income) and costs of future management and monitoring. Any cost benefits, for example solving a problem (e.g., removing an invasive species) and not having to pay recurrent costs, can also be considered. Cost information can be collated from literature, guidance and accounts but also from experience and knowledge. It is useful to ensure that costs for each action are considered on the same scale so that they are comparable - for example, the cost per unit area or per unit of effort."),
                          fixedRow(
                            column( tippy("<strong> Financial and resource-based cost-effectiveness </strong>", tooltip = "e.g., This is likely to cost a significant amount in time, construction labour, and materials...", allowHTML=TRUE,placement="top"),
-                                   textAreaInput(paste0("action13",id),label=NULL,width="200%",height="200%",rows=3),width=12)),
+                                   textAreaInput(paste0("action13",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
                          br(),
                          fixedRow(column(width=12,tippy("<h4> Score cost-effectiveness based on financial and resource-based costs </h4>", tooltip = "Please select a score based on the evidence gathered.", allowHTML=TRUE,placement="top"),
                                          radioButtons(paste0("actioncost1",id),choices=c("Harmful","Ineffective","Weakly effective","Moderately effective","Highly effective","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
@@ -403,7 +409,7 @@ server <- function(input, output, session) {
                          p("Non-financial costs and benefits are the wider undesirable and desirable effects of the action on species, habitats, and stakeholders that are not the focus of the action. Costs may include socio-cultural considerations if the action did not target socio-cultural outcomes; for example, considering whether using pesticides, excluding access, or removing invasive species may have 'reputational costs' to the practitioner, stakeholders, or their organisations (i.e., has a negative impact on how they are perceived by the general public or other groups). "),
                          fixedRow(
                            column( tippy("<strong> Non-financial, non-target costs, risks, and benefits </strong>", tooltip = "e.g., Tunnels and culverts could cause the deaths of other species of amphibians and animals, but if successful could also save many other species from suffering road mortality...", allowHTML=TRUE,placement="top"),
-                                   textAreaInput(paste0("action14",id),label=NULL,width="200%",height="200%",rows=3),width=12)),
+                                   textAreaInput(paste0("action14",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
                          br(),
                          fixedRow(column(width=12,tippy("<h4> Score Non-financial, non-target costs, risks, and benefits </h4>", tooltip = "Please select a score based on the evidence gathered.", allowHTML=TRUE,placement="top"),
                                          radioButtons(paste0("actioncost2",id),choices=c("Negative","Weakly negative","Neutral","Weakly positive","Positive","Trade-off", "Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
@@ -455,7 +461,7 @@ server <- function(input, output, session) {
                          em(strong("How likely is this action to be locally effective based on all the evidence and information you have gathered?")),
                          em(strong("What is the overall level of uncertainty associated with these conclusions?")),
                          p("Once the previous steps have been considered, it may be useful to summarise the likely local effectiveness of each action (whether modified or not), and the important costs, acceptability, and feasibility considerations that come with them. This draws together all the evidence previously gathered so that an evidence-based decision can be made in the next step, considering the relative advantages and disadvantages of each action alongside each other.
-                           Uncertainty is also important to consider here, in particular to understand whether the evidence that has been gathered is sufficient in its reliability and relevance to make robust conclusions. It is also important to consider if there is conflicting evidence from different sources - for example, how much trust can be placed in the evidence drawn from the scientific literature versus evidence drawn from local knowledge?"),
+                         Uncertainty is also important to consider here, in particular to understand whether the evidence that has been gathered is sufficient in its reliability and relevance to make robust conclusions. It is also important to consider if there is conflicting evidence from different sources - for example, how much trust can be placed in the evidence drawn from the scientific literature versus evidence drawn from local knowledge?"),
                          fixedRow(
                            column(tippy("<strong> Summarise evidence for and against implementation </strong>", tooltip = "e.g., Overall, this action may be an effective action for us to use but could have negative impacts on amphibians that make this action unacceptably risky - not only in terms of damage to wildlife, but also to the organisation's reputation even if the design of the culverts and tunnels was modified. The installation of these structures will also take time and require extensive permissions, alongside costing a substantial amount, so this is also unlikely to be a feasible action to implement.", allowHTML=TRUE,placement="top"),
                                   textAreaInput(paste0("action18",id),label=NULL,width="200%",height="200%",rows=2),width=12))
@@ -463,52 +469,49 @@ server <- function(input, output, session) {
   }
   })
   
-  
   output$testtab <- renderDT(server=FALSE,{
     idlist <- updateidlist$data
     if(length(idlist)>0){
       actnames<-lapply(1:length(idlist),
-                       function(i){c(idlist[i],
-                                     input[[glue("actioneff",idlist[i])]],
-                                     input[[glue("actioncost1",idlist[i])]],
-                                     input[[glue("actioncost2",idlist[i])]],
-                                     input[[glue("actionacc",idlist[i])]],
-                                     input[[glue("actionfeas",idlist[i])]],
-                                     input[[glue("actionmod",idlist[i])]],
-                                     input[[glue("actioneffcert",idlist[i])]],
-                                     input[[glue("actioncost1cert",idlist[i])]],
-                                     input[[glue("actioncost2cert",idlist[i])]],
-                                     input[[glue("actionacccert",idlist[i])]],
-                                     input[[glue("actionfeascert",idlist[i])]],
-                                     input[[glue("actionmodcert",idlist[i])]]
+                       function(i){data.table("Action"=idlist[i],
+                                              "Local Effectiveness"=input[[glue("actioneff",idlist[i])]],
+                                              "Cost-effectiveness"=input[[glue("actioncost1",idlist[i])]],
+                                              "Wider non-target costs, risks, and benefits"=input[[glue("actioncost2",idlist[i])]],
+                                              "Acceptability"=input[[glue("actionacc",idlist[i])]],
+                                              "Feasibility"=input[[glue("actionfeas",idlist[i])]],
+                                              "Modification potential"=input[[glue("actionmod",idlist[i])]],
+                                              "Local Effectiveness Certainty"=input[[glue("actioneffcert",idlist[i])]],
+                                              "Cost-effectiveness Certainty"=input[[glue("actioncost1cert",idlist[i])]],
+                                              "Wider non-target costs, risks, and benefits Certainty"=input[[glue("actioncost2cert",idlist[i])]],
+                                              "Acceptability Certainty"=input[[glue("actionacccert",idlist[i])]],
+                                              "Feasibility Certainty"=input[[glue("actionfeascert",idlist[i])]],
+                                              "Modification potential Certainty"=input[[glue("actionmodcert",idlist[i])]]
                                      )})
-      
-    table1 <- data.frame(do.call(rbind,actnames))
-    tablecolstocolour <- c("Local Effectiveness", "Financial and resource costs", "Wider non-target costs, risks, and benefits", "Acceptability","Feasibility","Modifications")
-    colnames(table1)<- c("Actions","Local Effectiveness", "Financial and resource costs", "Wider non-target costs, risks, and benefits", "Acceptability","Feasibility","Modifications",
-                         "Local Effectiveness Certainty", "Financial and resource costs Certainty", "Wider non-target costs, risks, and benefits Certainty", "Acceptability Certainty","Feasibility Certainty","Modifications Certainty")
-    datatable(table1,rownames=FALSE,
+    table1 <- data.table(do.call(rbind,actnames))
+    colvalscert <- c("#FFFFFF","#F5F5F5","#FFFFE0","#FFD700","#FFFFFF")
+    colvalnames <- c("Very low","Low","Moderate","High","Unsure")
+    datatable(table1,rownames=FALSE,height="100%",
               extensions=c('ColReorder','Responsive','FixedHeader'),
-              options = list(
+              options = list(searching=FALSE, paging=FALSE, info=FALSE,
                 fixedHeader = TRUE,
                 scrolly = TRUE,
                 colReorder = TRUE,
                 columnDefs = list(list(className = 'dt-center', targets = 0:6),list(visible=FALSE,targets=7:12)) # columns aligment to center, javascript starts at 0 not 1!
-              ),
-              editable="cell"
-    ) %>% formatStyle(columns="Local Effectiveness", valueColumns="Local Effectiveness Certainty", backgroundColor = styleEqual(c("Very low","Low","Moderate","High","Unsure"),c("#FFFFFF","#F5F5F5","#FFFFE0","#FFD700","#FFFFFF")))%>%
-     formatStyle(columns="Financial and resource costs", valueColumns="Financial and resource costs Certainty", backgroundColor = styleEqual(c("Very low","Low","Moderate","High","Unsure"),c("#FFFFFF","#F5F5F5","#FFFFE0","#FFD700","#FFFFFF")))%>%
-      formatStyle(columns="Wider non-target costs, risks, and benefits", valueColumns="Wider non-target costs, risks, and benefits Certainty", backgroundColor = styleEqual(c("Very low","Low","Moderate","High","Unsure"),c("#FFFFFF","#F5F5F5","#FFFFE0","#FFD700","#FFFFFF")))%>%
-        formatStyle(columns="Acceptability", valueColumns="Acceptability Certainty", backgroundColor = styleEqual(c("Very low","Low","Moderate","High","Unsure"),c("#FFFFFF","#F5F5F5","#FFFFE0","#FFD700","#FFFFFF")))%>%
-          formatStyle(columns="Feasibility", valueColumns="Feasibility Certainty", backgroundColor = styleEqual(c("Very low","Low","Moderate","High","Unsure"),c("#FFFFFF","#F5F5F5","#FFFFE0","#FFD700","#FFFFFF")))%>%
-            formatStyle(columns="Modifications", valueColumns="Modifications Certainty", backgroundColor = styleEqual(c("Very low","Low","Moderate","High","Unsure"),c("#FFFFFF","#F5F5F5","#FFFFE0","#FFD700","#FFFFFF")))
+              )
+              
+    ) %>% formatStyle(columns="Local Effectiveness", valueColumns="Local Effectiveness Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+     formatStyle(columns="Cost-effectiveness", valueColumns="Cost-effectiveness Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+      formatStyle(columns="Wider non-target costs, risks, and benefits", valueColumns="Wider non-target costs, risks, and benefits Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+        formatStyle(columns="Acceptability", valueColumns="Acceptability Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+          formatStyle(columns="Feasibility", valueColumns="Feasibility Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+            formatStyle(columns="Modification potential", valueColumns="Modification potential Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))
     }
   else{
     table1 <- data.frame(cbind(rep("Start assessing actions in the tool to display a summary output here."),"","","","","",""))
-    colnames(table1)<- c("Actions","Local Effectiveness", "Financial and resource costs", "Wider non-target costs, risks, and benefits", "Acceptability","Feasibility","Modifications")
-    datatable(table1,rownames=FALSE,
+    colnames(table1)<- c("Action","Local Effectiveness", "Cost-effectiveness", "Wider non-target costs, risks, and benefits", "Acceptability","Feasibility","Modification potential")
+    datatable(table1,rownames=FALSE,height="100%",
               extensions=c('ColReorder','Responsive','FixedHeader'),
-              options = list(
+              options = list(searching=FALSE, paging=FALSE, info=FALSE,
                 fixedHeader = TRUE,
                 scrolly = TRUE,
                 colReorder = TRUE),

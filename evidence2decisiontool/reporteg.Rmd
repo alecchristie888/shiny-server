@@ -11,6 +11,12 @@ output:
 
 # 1. Define the Decision Context
 
+## Name
+Your name
+
+## Organisation
+Your organisation
+
 ## What is the problem?
 Large numbers of amphibians are being killed when crossing a road that runs through part of the reserve. We need to find conservation actions that will reduce amphibian mortality but still enable the movement of frogs across the road.
 
@@ -34,7 +40,7 @@ The road was built in 2017 and since then our monitoring and anecdotal evidence 
 
 \pagebreak
 
-# Install culverts or tunnels that can act as underpasses for amphibians.
+# Install culverts or tunnels as road crossings
 
 ## Describe action
 Assist amphibians, particularly Natterjack toads, across the road through constructing culverts or tunnels under the road.
@@ -48,33 +54,53 @@ Natterjack toads (and other amphibians).
 Conservation Evidence (www.conservationevidence.com).
 
 ### Detailed assessment of evidence
-Thirty-two studies investigated the effectiveness of installing culverts or tunnels as road crossings for amphibians. Six of seven studies (including three replicated studies) in Canada, Germany, Italy, Hungary and the USA found that installing culverts or tunnels significantly decreased amphibian road deaths; in one study this was the case only when barrier fencing was also installed. One found no effect on road deaths. Fifteen of 24 studies (including one review and 17 replicated studies) in Australia, Canada, Europe and the USA found that culverts/tunnels were used by amphibians, by 15-85% of amphibians or 3-15 species, or that 23-100% of culverts or tunnels were used by amphibians or used in 12 of 14 studies reviewed. The majority of culverts/tunnels had barrier fencing to guide amphibians to entrances. Four found mixed effects depending on species, or for toads depending on the site or culvert type. Five found that culverts were used by less than 10% of amphibians or were not used. The use of culverts/tunnels was affected by diameter in three of six studies, with wider culverts used more, length in one of two studies, with long culverts avoided, lighting in all three studies, with mixed effects, substrate in three of six studies, with natural substrates used more, presence of water in two of three studies, with mixed effects, entrance location in one and tunnel climate in one study. Six studies (including one replicated, controlled study) in Canada, Spain, the Netherlands and USA investigated the use of culverts with flowing water and found that they were used by amphibians, or rarely used by salamanders or not used, and were used more or the same amount as dry culverts. Certain culvert designs were not suitable for amphibians; one-way tunnels with vertical entry chutes resulted in high mortality of common toads and condensation deposits from steel culverts had very high metal concentrations. One study found that thousands of amphibians were still killed on the road.
+On Conservation Evidence, thirty-two studies investigated the effectiveness of installing culverts or tunnels as road crossings for amphibians. Six of seven studies (including three replicated studies) in Canada, Germany, Italy, Hungary and the USA found that installing culverts or tunnels significantly decreased amphibian road deaths; in one study this was the case only when barrier fencing was also installed. One found no effect on road deaths. Fifteen of 24 studies (including one review and 17 replicated studies) in Australia, Canada, Europe and the USA found that culverts/tunnels were used by amphibians, by 15-85% of amphibians or 3-15 species, or that 23-100% of culverts or tunnels were used by amphibians or used in 12 of 14 studies reviewed. The majority of culverts/tunnels had barrier fencing to guide amphibians to entrances. Four found mixed effects depending on species, or for toads depending on the site or culvert type. Five found that culverts were used by less than 10% of amphibians or were not used. The use of culverts/tunnels was affected by diameter in three of six studies, with wider culverts used more, length in one of two studies, with long culverts avoided, lighting in all three studies, with mixed effects, substrate in three of six studies, with natural substrates used more, presence of water in two of three studies, with mixed effects, entrance location in one and tunnel climate in one study. Six studies (including one replicated, controlled study) in Canada, Spain, the Netherlands and USA investigated the use of culverts with flowing water and found that they were used by amphibians, or rarely used by salamanders or not used, and were used more or the same amount as dry culverts. Certain culvert designs were not suitable for amphibians; one-way tunnels with vertical entry chutes resulted in high mortality of common toads and condensation deposits from steel culverts had very high metal concentrations. One study found that thousands of amphibians were still killed on the road. Two reports from DEFRA also suggested trials of tunnels showed that they decreased road deaths. These studies and reports were deemed to offer weak-moderate evidence.
 
 ### Summarise assessment of evidence
-This action was assessed as being a trade-off between beneficial and harmful on Conservation Evidence by a panel of experts. There seems to be variable use of culverts and tunnels by differences species, and in some cases, depending on the design of culverts and tunnels, amphibians can become trapped and die.
+This action was assessed as being a trade-off between beneficial and harmful on Conservation Evidence by a panel of subject experts. There seems to be variable use of culverts and tunnels by differences species, and in some cases, depending on the design of culverts and tunnels, amphibians can become trapped and die. The evidence base is not that strong and there is clearly uncertainty over whether culverts and tunnels do more harm than good.
 
-## Local knowledge and uncertainty
-### Explicit knowledge
-The last ranger sent me a report suggesting that a previous trial of a tunnel under the old road, that has since been resurfaced and rerouted, when it was first built didn't record any Natterjack toads using it over a two year period.
+## Undocumented knowledge
+The last ranger sent me a report suggesting that a previous trial of a tunnel under the old road, that has since been resurfaced and rerouted, when it was first built didn't record any Natterjack toads using it over a two year period. I have never seen them use any Natterjack toads using tunnels and culverts in other places on this reserve.
 
-### Tacit knowledge
-I have never seen them use any Natterjack toads using tunnels and culverts in other places on this reserve.
+### Assessment of effectiveness based on scientific literature and undocumented knowledge
+Effectiveness: Trade-off between benefits and harms.
+Certainty: Moderate.
 
 ## Costs
 ### Financial costs and resource requirements
 This is likely to cost a significant amount in time, construction labour, and materials.
 
+#### Assessment of cost-effectiveness
+Cost-effectiveness: Low.
+Certainty: Moderate.
+
 ### Non-financial and non-target costs, risks, and benefits
 Tunnels and culverts could cause the deaths of other species of amphibians and animals, but if successful could also save many other species from suffering road mortality.
+
+#### Assessment of non-financial and non-target costs, risks, and benefits
+Wider non-target costs, risks, and benefits: Trade-off.
+Certainty: Moderate.
 
 ## Acceptability
 If the tunnels and culverts cause many deaths of amphibians then our reputation could suffer. This is likely to be unacceptably risky in this regard.
 
+### Assessment of Acceptability
+Acceptability: Low.
+Certainty: Moderate.
+
 ## Feasibility
 We would need to get permission to install these structures under the road, which could take time.
 
+### Assessment of Feasibility
+Feasibility: Low.
+Certainty: High.
+
 ## Consider effectiveness of modificiations
 We could try certain designs of culverts and tunnels that limit mortality.
+
+### Assessment of Modifications
+Potential of modifications to improve action: Moderate.
+Certainty: Moderate.
 
 ## Summarise all the evidence for action
 Overall, this action may be an effective action for us to use but could have negative impacts on amphibians that make this action unacceptably risky - not only in terms of damage to wildlife, but also to the organisation's reputation even if the design of the culverts and tunnels was modified. The installation of these structures will also take time and require extensive permissions, alongside costing a substantial amount, so this is also unlikely to be a feasible action to implement.
@@ -100,28 +126,48 @@ Seven of eight studies (including one replicated and two controlled studies) in 
 ### Summarise assessment of evidence
 This action was assessed as being a trade-off between beneficial and harmful on Conservation Evidence by a panel of experts. There seems to be some evidence that barrier fencing helps to prevent road deaths, but it is very dependent on the length of fence and materials used. In some cases it can cause aggregations at the end of the fences and lead to substantial concentrations of road deaths.
 
-## Local knowledge and uncertainty
-### Explicit knowledge
-In the past we have monitored where the major frog mortality on the road is concentrated, and that is in sections that do not already have major obstacles or fencing to frogs. So it is possible that the fencing could be concentrated here.
+## Undocumented knowledge
+In the past we have monitored where the major frog mortality on the road is concentrated, and that is in sections that do not already have major obstacles or fencing to frogs. So it is possible that the fencing could be concentrated here. For this to be an effective action on the reserve, we would need to use a significant amount of fencing, of a sufficient height for this to work as I am sure Natterjack toads climb over great obstacles on the reserve. My experience with any kind of fencing for wildlife does agree with the scientific evidence that the material used is key to its success - this will be important to consider if implementing this action. 
 
-### Tacit knowledge
-For this to be an effective action on the reserve, we would need to use a significant amount of fencing, of a sufficient height for this to work as I am sure Natterjack toads  climb over great obstacles on the reserve. My experience with any kind of fencing for wildlife does agree with the scientific evidence that the material used is key to its success - this will be important to consider if implementing this action. 
+#### Assessment of effectiveness based on scientific literature and undocumented knowledge
+Effectiveness: Trade-off between benefits and harms.
+Certainty: Low.
 
 ## Costs
 ### Financial costs and resource requirements
 If the fencing has to be very long to prevent amphibians simply going around it, the costs could be moderately high - particularly if the fence itself needs to be quite tall and made of premium materials. However, if we target stragetic points this could limit the amount of fencing we need to channel amphibians into natural watercourses.
 
+#### Assessment of cost-effectiveness
+Cost-effectiveness: Moderate.
+Certainty: Moderate.
+
 ### Non-financial and non-target costs, risks, and benefits
 The fences may prevent other wildlife crossing the range in dangerous places, but could also funnel them into certain areas that may increase their road mortality.
+
+#### Assessment of non-financial and non-target costs, risks, and benefits
+Wider non-target costs, risks, and benefits: Trade-off.
+Certainty: Low.
 
 ## Acceptability
 Putting up a lot of fencing might require permission if it is very close to the road and that could take time to get.
 
+### Assessment of Acceptability
+Acceptability: Moderate.
+Certainty: Moderate.
+
 ## Feasibility
 Putting up the fencing should be relatively easy to achieve with the help of volunteers.
 
+### Assessment of Feasibility
+Feasibility: High.
+Certainty: Moderate.
+
 ## Consider effectiveness of modificiations
 We could use the recommendations for long distances of high fencing with strong impermeable material and possibly concentrate its use during the migration season, and at strategic points along the road where we can channel toads into natural watercourses leading under the road.
+
+### Assessment of Modifications
+Potential of modifications to improve action: Moderate.
+Certainty: Moderate.
 
 ## Summarise all the evidence for action
 This action appears to be relatively cost-effective and feasible to implement, and should be effective on the reserve if we can use the correct types of fencing and use it at certain times of year. We may need to get permission to install this, but as it may be a temporary measure at certain times of the year, this seems acceptable and feasible to implement.
@@ -136,7 +182,7 @@ Transport amphibians across the road through patrols at night during migration s
 ## Focus of action
 Natterjack toads (and other amphibians).
 
-## Scientific evidence and uncertainty
+## Scientific literature
 
 ### Evidence sources considered
 Conservation Evidence (www.conservationevidence.com).
@@ -147,24 +193,48 @@ Two studies (including one replicated study) in Italy and the UK found that desp
 ### Summarise assessment of evidence
 This action was assessed as being a unlikely to be beneficial on Conservation Evidence by a panel of experts. Although many frogs are assisted in crossing roads, it does not seem like this action prevents enough road mortality to ultimately stop population declines.
 
-## Undocumented knowledge and uncertainty
+## Undocumented knowledge
 In the past frog and toad patrols have helped in the local area to save 1000s of amphibians based on reports from other reserves that I have seen, but that hasn't been accompanied by any change in the local population declines of Natterjack toads. The scale on which this would need to be conducted during the migration season is huge, even on the small section of road we are focused on, and I don't think we would be able to get enough volunteers to make any real difference to the number of road fatalities.
+
+### Assessment of effectiveness based on scientific literature and undocumented knowledge
+Effectiveness: Ineffective.
+Certainty: Low.
 
 ## Costs and risks
 ### Financial costs and resource requirements  
-It would be relatively cheap in monetary terms to conduct if we are able to get volunteers to participate, although it would require a significant investment of their time, at unsociable hours of the day, that could be better used elsewhere on the reserve.
+It would be relatively cheap in monetary terms to conduct if we are able to get volunteers to participate, although it would require a significant investment of their time, at unsociable hours of the day, that could be better used elsewhere on the reserve. We would need someone to organise the volunteers time and conduct the patrols and pay for high-vis equipment and road signs.
+
+#### Assessment of cost-effectiveness
+Cost-effectiveness: Moderate.
+Certainty: Moderate.
 
 ### Non-financial and non-target costs, risks, and benefits
 Volunteers may become disenfranchised from undertaking this hard work at unsociable hours. We may be able to assist the migration of other amphibians and animals.
 
+#### Assessment of non-financial and non-target costs, risks, and benefits
+Wider non-target costs, risks, and benefits: Trade-off.
+Certainty: Low.
+
 ## Acceptability
 We could get some negativity if we are stopping cars a lot with these patrols. On the other hand, we could use this as an opportunity to gain some publicity and more volunteers to help on the reserve; I have heard that local people seem generally supportive of toad patrols undertaken near other local reserves.
 
+### Assessment of Acceptability
+Acceptability: Moderate.
+Certainty: Moderate.
+
 ## Feasibility
-We would need to get permission to install these structures under the road, which could take time.
+We would need to get permission to conduct these patrols and recruit enough volunteers to take part.
+
+### Assessment of Feasibility
+Feasibility: Moderate. 
+Certainty: Low.
 
 ## Consider effectiveness of modificiations
 There are no suitable modifications that could help here.
+
+### Assessment of Modifications
+Potential of modifications to improve action: Very low.
+Certainty: High.
 
 ## Summarise all the evidence for action
 The action does not seem likely to be locally effective and unlikely to be feasible to implement in any case. It may raise some publicity but on balance it does not seem to justify the cost of and to volunteers in undertaking fairly intensive work for long hours at unsociable times of day (even just during the migration season). 
@@ -174,6 +244,37 @@ The action does not seem likely to be locally effective and unlikely to be feasi
 # 3. Make an Evidence-Based Decision
 
 ## Summary assessment table for each action 
+```{r chunklabel, dev='png', fig.align="left", fig.dim=c(3,0.5),out.width="100%",out.height="100%",dpi=300,echo=FALSE, cache=FALSE, warning = FALSE, message = FALSE, tidy=TRUE} 
+library(DT) 
+library(webshot) 
+if(is.null(webshot:::find_phantom())){webshot::install_phantomjs()} 
+    
+    actnames<-rbind(c("Install culverts or tunnels as road crossings","Trade-off between benefits and harms","Low","Trade-off","Low","Low","Moderate","Moderate","Moderate","Moderate","Moderate","High","Moderate"),
+                c("Install barrier fencing along roads","Trade-off between benefits and harms","Moderate","Trade-off","Moderate","High","Moderate","Low","Moderate","Low","Moderate","Moderate","Moderate"),
+                c("Use humans to assist migrating amphibians across roads","Ineffective","Moderate","Trade-off","Moderate","Moderate","Very low","Low","Moderate","Low","Moderate","Low","High"))
+    
+    table1 <- data.frame(actnames)
+    tablecolstocolour <- c("Local Effectiveness", "Cost-effectiveness", "Wider non-target costs, risks, and benefits", "Acceptability","Feasibility","Modification potential")
+    colnames(table1)<- c("Action","Local Effectiveness", "Cost-effectiveness", "Wider non-target costs, risks, and benefits", "Acceptability","Feasibility","Modification potential",
+                         "Local Effectiveness Certainty", "Cost-effectiveness Certainty", "Wider non-target costs, risks, and benefits Certainty", "Acceptability Certainty","Feasibility Certainty","Modification potential Certainty")
+    colvalscert <- c("#FFFFFF","#F5F5F5","#FFFFE0","#FFD700","#FFFFFF")
+    colvalnames <- c("Very low","Low","Moderate","High","Unsure")
+    datatable(table1,rownames=FALSE,height="100%",
+              extensions=c('ColReorder','Responsive','FixedHeader'),
+              options = list(searching=FALSE, paging=FALSE, info=FALSE,
+                fixedHeader = TRUE,
+                scrolly = TRUE,
+                colReorder = TRUE,
+                columnDefs = list(list(className = 'dt-center', targets = 0:6),list(visible=FALSE,targets=7:12)) # columns aligment to center, javascript starts at 0 not 1!
+              )
+              
+    ) %>% formatStyle(columns="Local Effectiveness", valueColumns="Local Effectiveness Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+     formatStyle(columns="Cost-effectiveness", valueColumns="Cost-effectiveness Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+      formatStyle(columns="Wider non-target costs, risks, and benefits", valueColumns="Wider non-target costs, risks, and benefits Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+        formatStyle(columns="Acceptability", valueColumns="Acceptability Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+          formatStyle(columns="Feasibility", valueColumns="Feasibility Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+            formatStyle(columns="Modification potential", valueColumns="Modification potential Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))
+```
 
 ## Which action(s), if any, are the best ones to implement to achieve the focal targets and goals you defined at the beginning?
 __Install barrier fencing along roads__: This action has been shown to be effective from the evidence I have considered if it is implemented properly. The costs will be less than installing culverts or tunnels, and it should take less time to get permissions to install the fencing along the road. If we target the fencing at strategic positions, and make it high enough so Natterjack toads not climb over it, we can funnel them to natural watercourses underneath the road.
