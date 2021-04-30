@@ -101,10 +101,17 @@ ui <- function(request){fluidPage(
                           tabsetPanel(id="tab03_extra")
                  ),
                  tabPanel(title="3. Make an Evidence-Based Decision",id="tab13",value='tab13_val',
+                          tags$style(type="text/css",
+                                     ".shiny-output-error { visibility: hidden; }",
+                                     ".shiny-output-error:before { visibility: hidden; }"
+                          ),
                           br(),
                           h4("Summary assessment table for each action"),
-                          p("Table legend: White = Very low certainty or unsure. Pale yellow = Low certainty. Yellow = Moderate certainty. Gold = High certainty."),
+                          p("Table legend: Darker yellow = greater certainty. (White = Very low certainty or unsure, Pale yellow = Low certainty, Yellow = Moderate certainty, Dark yellow/Gold = High certainty)."),
                           DTOutput("testtab"),
+                          br(),
+                          h4("Summary of evidence for and against implementation of each action:"),
+                          htmlOutput("step3summarytext"),
                           br(),
                           h4("3.A. Weigh up the evidence for and against different actions"),
                           em(strong("Reflecting on the problem you face and the evidence and information you have gathered, what is your decision and why?")),
@@ -141,6 +148,8 @@ ui <- function(request){fluidPage(
 
 
 server <- function(input, output, session) {
+  
+
   observeEvent(input$add, {
     id <- input$newactionname
     appendTab(inputId = "tab03_extra",
@@ -220,7 +229,7 @@ server <- function(input, output, session) {
                            textAreaInput(paste0("action13",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
                        br(),
                        fixedRow(column(width=12,tippy("<h4> Score cost-effectiveness based on financial and resource-based costs </h4>", tooltip = "Please select a score based on the evidence gathered.", allowHTML=TRUE,placement="top"),
-                                       radioButtons(paste0("actioncost1",id),choices=c("Harmful","Ineffective","Weakly effective","Moderately effective","Highly effective","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
+                                       radioButtons(paste0("actioncost1",id),choices=c("Very poor","Poor","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                        fixedRow(column(width=12,tippy("<strong> Score certainty in this score </strong>", tooltip = "Please select a score based on your confidence in the score you have given (and the evidence gathered).", allowHTML=TRUE,placement="top"),
                                        radioButtons(paste0("actioncost1cert",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                        h4("2.C.ii. Assess the non-financial costs, risks, and benefits for non-target species, habitats, and stakeholders"),
@@ -244,7 +253,7 @@ server <- function(input, output, session) {
                            textAreaInput(paste0("action15",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
                        br(),
                        fixedRow(column(width=12,tippy("<h4> Score Acceptability </h4>", tooltip = "Please select a score based on the evidence gathered.", allowHTML=TRUE,placement="top"),
-                                       radioButtons(paste0("actionacc",id),choices=c("Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
+                                       radioButtons(paste0("actionacc",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                        fixedRow(column(width=12,tippy("<strong> Score certainty in this score </strong>", tooltip = "Please select a score based on your confidence in the score you have given (and the evidence gathered).", allowHTML=TRUE,placement="top"),
                                        radioButtons(paste0("actionacccert",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                        br(),
@@ -258,7 +267,7 @@ server <- function(input, output, session) {
                            textAreaInput(paste0("action16",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
                        br(),
                        fixedRow(column(width=12,tippy("<h4> Score Feasibility </h4>", tooltip = "Please select a score based on the evidence gathered.", allowHTML=TRUE,placement="top"),
-                                       radioButtons(paste0("actionfeas",id),choices=c("Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
+                                       radioButtons(paste0("actionfeas",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                        fixedRow(column(width=12,tippy("<strong> Score certainty in this score </strong>", tooltip = "Please select a score based on your confidence in the score you have given (and the evidence gathered).", allowHTML=TRUE,placement="top"),
                                        radioButtons(paste0("actionfeascert",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                        br(),
@@ -331,7 +340,7 @@ server <- function(input, output, session) {
                            "li a {
                            font-size: 20px;
                            font-weight: bold;
-                            }
+                              }
                            "
                          ),
                          br(),
@@ -402,7 +411,7 @@ server <- function(input, output, session) {
                                    textAreaInput(paste0("action13",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
                          br(),
                          fixedRow(column(width=12,tippy("<h4> Score cost-effectiveness based on financial and resource-based costs </h4>", tooltip = "Please select a score based on the evidence gathered.", allowHTML=TRUE,placement="top"),
-                                         radioButtons(paste0("actioncost1",id),choices=c("Harmful","Ineffective","Weakly effective","Moderately effective","Highly effective","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
+                                         radioButtons(paste0("actioncost1",id),choices=c("Very poor","Poor","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                          fixedRow(column(width=12,tippy("<strong> Score certainty in this score </strong>", tooltip = "Please select a score based on your confidence in the score you have given (and the evidence gathered).", allowHTML=TRUE,placement="top"),
                                          radioButtons(paste0("actioncost1cert",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                          h4("2.C.ii. Assess the non-financial costs, risks, and benefits for non-target species, habitats, and stakeholders"),
@@ -426,7 +435,7 @@ server <- function(input, output, session) {
                                   textAreaInput(paste0("action15",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
                          br(),
                          fixedRow(column(width=12,tippy("<h4> Score Acceptability </h4>", tooltip = "Please select a score based on the evidence gathered.", allowHTML=TRUE,placement="top"),
-                                         radioButtons(paste0("actionacc",id),choices=c("Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
+                                         radioButtons(paste0("actionacc",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                          fixedRow(column(width=12,tippy("<strong> Score certainty in this score </strong>", tooltip = "Please select a score based on your confidence in the score you have given (and the evidence gathered).", allowHTML=TRUE,placement="top"),
                                          radioButtons(paste0("actionacccert",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                          br(),
@@ -440,7 +449,7 @@ server <- function(input, output, session) {
                                   textAreaInput(paste0("action16",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
                          br(),
                          fixedRow(column(width=12,tippy("<h4> Score Feasibility </h4>", tooltip = "Please select a score based on the evidence gathered.", allowHTML=TRUE,placement="top"),
-                                         radioButtons(paste0("actionfeas",id),choices=c("Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
+                                         radioButtons(paste0("actionfeas",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                          fixedRow(column(width=12,tippy("<strong> Score certainty in this score </strong>", tooltip = "Please select a score based on your confidence in the score you have given (and the evidence gathered).", allowHTML=TRUE,placement="top"),
                                          radioButtons(paste0("actionfeascert",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                          br(),
@@ -462,7 +471,7 @@ server <- function(input, output, session) {
                          em(strong("How likely is this action to be locally effective based on all the evidence and information you have gathered?")),
                          em(strong("What is the overall level of uncertainty associated with these conclusions?")),
                          p("Once the previous steps have been considered, it may be useful to summarise the likely local effectiveness of each action (whether modified or not), and the important costs, acceptability, and feasibility considerations that come with them. This draws together all the evidence previously gathered so that an evidence-based decision can be made in the next step, considering the relative advantages and disadvantages of each action alongside each other.
-                         Uncertainty is also important to consider here, in particular to understand whether the evidence that has been gathered is sufficient in its reliability and relevance to make robust conclusions. It is also important to consider if there is conflicting evidence from different sources - for example, how much trust can be placed in the evidence drawn from the scientific literature versus evidence drawn from local knowledge?"),
+                           Uncertainty is also important to consider here, in particular to understand whether the evidence that has been gathered is sufficient in its reliability and relevance to make robust conclusions. It is also important to consider if there is conflicting evidence from different sources - for example, how much trust can be placed in the evidence drawn from the scientific literature versus evidence drawn from local knowledge?"),
                          fixedRow(
                            column(tippy("<strong> Summarise evidence for and against implementation </strong>", tooltip = "e.g., Overall, this action may be an effective action for us to use but could have negative impacts on amphibians that make this action unacceptably risky - not only in terms of damage to wildlife, but also to the organisation's reputation even if the design of the culverts and tunnels was modified. The installation of these structures will also take time and require extensive permissions, alongside costing a substantial amount, so this is also unlikely to be a feasible action to implement.", allowHTML=TRUE,placement="top"),
                                   textAreaInput(paste0("action18",id),label=NULL,width="200%",height="200%",rows=2),width=12))
@@ -488,9 +497,11 @@ server <- function(input, output, session) {
                                               "Feasibility Certainty"=input[[glue("actionfeascert",idlist[i])]],
                                               "Modification potential Certainty"=input[[glue("actionmodcert",idlist[i])]]
                                      )})
+      
     table1 <- data.table(do.call(rbind,actnames))
     colvalscert <- c("#FFFFFF","#FFFFCC","#FFFF80","#FFCC00","#FFFFFF")
     colvalnames <- c("Very low","Low","Moderate","High","Unsure")
+    
     datatable(table1,rownames=FALSE,height="100%",
               extensions=c('ColReorder','Responsive','FixedHeader'),
               options = list(searching=FALSE, paging=FALSE, info=FALSE,
@@ -523,7 +534,16 @@ server <- function(input, output, session) {
   })  
   
     
+  output$step3summarytext <- renderUI({
+    idlist <- updateidlist$data
+    if(length(idlist)>0){
+      lapply(1:length(idlist), function(i){
+        HTML(paste0(paste0('<b>',idlist[i],sep='</b>'), paste0(": ",input[[glue("action18",idlist[i])]], sep = '<br/><br/>')))
+             })
+    }
+    else{HTML(paste0("(Please complete Step 2 to display summary text here for different actions)."))}
     
+  })
     
     
   setBookmarkExclude(c("add","remove","newactionname","newactionnamerem"))
@@ -531,7 +551,7 @@ server <- function(input, output, session) {
   
   #output$numids <- renderText({sort(updateidlist$data)})
   
-  
+  #/srv/shiny-server/evidence2decisiontool/ remove this to download reports when piloting local version.
     output$downloadReport <- downloadHandler(
       filename = function() {
         paste(list('Evidence-to-decision_summary',Sys.Date()), sep = '.', switch(
@@ -541,7 +561,7 @@ server <- function(input, output, session) {
       
       content = function(file) {
         library(rmarkdown)
-          out <- render('report.Rmd', switch(
+          out <- render('/srv/shiny-server/evidence2decisiontool/report.Rmd', switch(
           input$format,
           PDF = pdf_document(), HTML = html_document(), Word = word_document()
         ))
@@ -549,7 +569,7 @@ server <- function(input, output, session) {
       }
     )
   
-  #/srv/shiny-server/evidence2decisiontool/
+  #/srv/shiny-server/evidence2decisiontool/ remove this to download reports when piloting local version.
   output$downloadReporteg <- downloadHandler(
       filename = function() {
         paste(list('Example_evidence-to-decision_summary',Sys.Date()), sep = '.', switch(
@@ -559,7 +579,7 @@ server <- function(input, output, session) {
       
       content = function(file) {
         library(rmarkdown)
-        out <- render('reporteg.Rmd', switch(
+        out <- render('/srv/shiny-server/evidence2decisiontool/reporteg.Rmd', switch(
           input$formateg,
           PDF = pdf_document(), HTML = html_document(), Word = word_document()
         ))
