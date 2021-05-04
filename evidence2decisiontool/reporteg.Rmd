@@ -97,7 +97,7 @@ We would need to get permission to install these structures under the road, whic
 Feasibility: Low.
 Certainty: High.
 
-## Consider effectiveness of modificiations
+## Consider effectiveness of modifications
 We could try certain designs of culverts and tunnels that limit mortality.
 
 ### Assessment of Modifications
@@ -139,7 +139,7 @@ Certainty: Low.
 
 ## Costs
 ### Financial costs and resource requirements
-If the fencing has to be very long to prevent amphibians simply going around it, the costs could be moderately high - particularly if the fence itself needs to be quite tall and made of premium materials. However, if we target stragetic points this could limit the amount of fencing we need to channel amphibians into natural watercourses.
+If the fencing has to be very long to prevent amphibians simply going around it, the costs could be moderately high - particularly if the fence itself needs to be quite tall and made of premium materials. However, if we target strategic points this could limit the amount of fencing we need to channel amphibians into natural watercourses.
 
 #### Assessment of cost-effectiveness
 Cost-effectiveness: Moderate.
@@ -166,7 +166,7 @@ Putting up the fencing should be relatively easy to achieve with the help of vol
 Feasibility: High.
 Certainty: Moderate.
 
-## Consider effectiveness of modificiations
+## Consider effectiveness of modifications
 We could use the recommendations for long distances of high fencing with strong impermeable material and possibly concentrate its use during the migration season, and at strategic points along the road where we can channel toads into natural watercourses leading under the road.
 
 ### Assessment of Modifications
@@ -235,7 +235,7 @@ We would need to get permission to conduct these patrols and recruit enough volu
 Feasibility: Moderate. 
 Certainty: Low.
 
-## Consider effectiveness of modificiations
+## Consider effectiveness of modifications
 There are no suitable modifications that could help here.
 
 ### Assessment of Modifications
@@ -291,5 +291,5 @@ __Use humans to assist migrating amphibians across roads__: This is because base
 __Install culverts or tunnels as road crossings__: This is because although this could be an effective action based on the scientific evidence, it can lead to mortality of amphibians within the culverts and tunnels. It would also cost a significant amount of money which would likely be beyond our budget, and would also take a lot of time to get permission to construct and build.
 
 ## What is your overall decision, what are the next steps, and why? 
-We will now investigate the correct height, material, and length of fencing needed and identify key stragetic points along the road to place the fencing. We will also request permission to install the fencing and trial it during the next migration season. We will write up the findings of this trial in a report, comparing it to previous years mortality, and publish this online through the Conservation Evidence journal.
+We will now investigate the correct height, material, and length of fencing needed and identify key strategic points along the road to place the fencing. We will also request permission to install the fencing and trial it during the next migration season. We will write up the findings of this trial in a report, comparing it to previous years mortality, and publish this online through the Conservation Evidence journal.
 
