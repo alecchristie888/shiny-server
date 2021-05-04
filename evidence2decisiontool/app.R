@@ -49,7 +49,8 @@ ui <- function(request){fluidPage(
                           paste("The Evidence-to-Decision tool has been co-designed between the"),
                           a("Conservation Evidence", href="https://www.conservationevidence.com", target="_blank"),
                           paste("group and practitioners from several organisations to help guide practitioners through the process of making an evidence-informed decision. 
-                                The tool is structured to help you consider and combine several forms of evidence (e.g., scientific evidence, tacit knowledge, values, costs) to reach a transparent decision, documenting each stage of the process so that the logic and reasoning behind decisions can be open and traceable."),
+                                The tool is structured to help you consider and combine several forms of evidence (e.g., scientific evidence, tacit knowledge, values, costs) to reach a transparent decision, documenting each stage of the process so that the logic and reasoning behind decisions can be open and traceable. If you wish to use an offline template of the tool, please"),
+                          a("click here.",href="Evidence_to_Decision_Tool_Offline_Template.docx", target="_blank"),
                           br(),br(),
                           p("The tool is structured using three steps: 1.) Define the Decision Context (i.e., What is the problem you want to solve?); 2.) Gather Evidence (i.e., What actions are likely to be the most effective to address my problem in my local context?);
                             3.) Make an Evidence-Informed Decision (i.e., What are the next steps? Which actions will be implemented based on the evidence you have assessed?). The diagram below lays out the detailed steps that this tool will guide you through."),
