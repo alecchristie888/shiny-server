@@ -227,7 +227,7 @@ server <- function(input, output, session) {
                        fixedRow(column(width=12,tippy("<strong> Score certainty in this score </strong>", tooltip = '<p style="font-size:15px">Please select a score based on your confidence in the score you have given (and the evidence gathered).</p>', allowHTML=TRUE,placement="top"),
                                        radioButtons(paste0("actioneffcert",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                        br(),
-                       h4("2.C. Assess costs and risks"),
+                       h4("2.C. Assess costs, risks, and wider benefits"),
                        h4("2.C.i. Assess financial and resource-based cost-effectiveness"),
                        em(strong("How much does the action cost financially and what are its resource requirements? What is the overall certainty (reliability) of these costs?")),
                        p("Resource requirements and financial costs form the core of assessing the cost-effectiveness of each action. These can be broadly defined as the resources and finances required to implement a conservation action."),
@@ -240,15 +240,19 @@ server <- function(input, output, session) {
                                        radioButtons(paste0("actioncost1",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                        fixedRow(column(width=12,tippy("<strong> Score certainty in this score </strong>", tooltip = '<p style="font-size:15px">Please select a score based on your confidence in the score you have given (and the evidence gathered).</p>', allowHTML=TRUE,placement="top"),
                                        radioButtons(paste0("actioncost1cert",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
-                       h4("2.C.ii. Assess the non-financial costs, risks, and benefits for non-target species, habitats, and stakeholders"),
-                       em(strong("What are the wider non-financial costs, risks, and benefits of implementing this action?")),
-                       p("Non-financial costs and benefits are the wider undesirable and desirable effects of the action on species, habitats, and stakeholders that are not the focus of the action. Costs may include socio-cultural considerations if the action did not target socio-cultural outcomes; for example, considering whether using pesticides, excluding access, or removing invasive species may have 'reputational costs' to the practitioner, stakeholders, or their organisations (i.e., has a negative impact on how they are perceived by the general public or other groups). "),
+                       h4("2.C.ii. Assess the non-financial costs, risks, and wider benefits for non-target species, habitats, and stakeholders"),
+                       em(strong("What are the wider non-financial costs, risks, and wider benefits of implementing this action?")),
+                       p("Non-financial costs and wider benefits are the wider undesirable and desirable effects of the action on species, habitats, and stakeholders that are not the focus of the action. Costs may include socio-cultural considerations if the action did not target socio-cultural outcomes; for example, considering whether using pesticides, excluding access, or removing invasive species may have 'reputational costs' to the practitioner, stakeholders, or their organisations (i.e., has a negative impact on how they are perceived by the general public or other groups). "),
                        fixedRow(
-                         column( tippy("<strong> Non-financial, non-target costs, risks, and benefits </strong>", tooltip = '<p style="font-size:15px">e.g., Tunnels and culverts could cause the deaths of other species of amphibians and animals, but if successful could also save many other species from suffering road mortality...</p>', allowHTML=TRUE,placement="top"),
+                         column( tippy("<strong> Non-financial, non-target costs and risks </strong>", tooltip = '<p style="font-size:15px">e.g., Tunnels and culverts could cause the deaths of other species of amphibians and animals...</p>', allowHTML=TRUE,placement="top"),
                            textAreaInput(paste0("action14",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
                        br(),
-                       fixedRow(column(width=12,tippy("<h4> Score Non-financial, non-target costs, risks, and benefits </h4>", tooltip = '<p style="font-size:15px">Please select a score based on the evidence gathered.</p>', allowHTML=TRUE,placement="top"),
-                                       radioButtons(paste0("actioncost2",id),choices=c("Negative","Weakly negative","Neutral","Weakly positive","Positive","Trade-off", "Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
+                       fixedRow(
+                         column( tippy("<strong> Wider benefits </strong>", tooltip = '<p style="font-size:15px">e.g., Tunnels and culverts could also save many other species from suffering road mortality...</p>', allowHTML=TRUE,placement="top"),
+                                 textAreaInput(paste0("action15",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
+                       br(),
+                       fixedRow(column(width=12,tippy("<h4> Score balance between non-financial, non-target costs, risks, and wider benefits </h4>", tooltip = '<p style="font-size:15px">Please select a score based on the evidence gathered.</p>', allowHTML=TRUE,placement="top"),
+                                       radioButtons(paste0("actioncost2",id),choices=c("Costs/risks far greater","Costs/risks slightly greater","Trade-off between costs/risks and benefits","Benefits slightly greater","Benefits far greater", "Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                        fixedRow(column(width=12,tippy("<strong> Score certainty in this score </strong>", tooltip = '<p style="font-size:15px">Please select a score based on your confidence in the score you have given (and the evidence gathered).</p>', allowHTML=TRUE,placement="top"),
                                        radioButtons(paste0("actioncost2cert",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                        br(),
@@ -258,7 +262,7 @@ server <- function(input, output, session) {
                        p("Carefully consider whether it is acceptable to implement this action - do the outcomes of this action align to the values held by yourself and key stakeholders? Before you decide, it may be helpful to identify the major relevant values held by yourself and key stakeholders."),
                        fixedRow(
                          column(tippy("<strong> Acceptability </strong>", tooltip = '<p style="font-size:15px">e.g., If the tunnels and culverts cause many deaths of amphibians then our reputation could suffer. This is likely to be unacceptably risky.</p>', allowHTML=TRUE,placement="top"),
-                           textAreaInput(paste0("action15",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
+                           textAreaInput(paste0("action16",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
                        br(),
                        fixedRow(column(width=12,tippy("<h4> Score Acceptability </h4>", tooltip = '<p style="font-size:15px">Please select a score based on the evidence gathered.</p>', allowHTML=TRUE,placement="top"),
                                        radioButtons(paste0("actionacc",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
@@ -272,7 +276,7 @@ server <- function(input, output, session) {
                        p("Carefully consider whether it is feasible to implement this action."),
                        fixedRow(
                          column(tippy("<strong> Feasibility </strong>", tooltip = '<p style="font-size:15px">e.g., We would need to get permission to install these structures under the road, which could take time...</p>', allowHTML=TRUE,placement="top"),
-                           textAreaInput(paste0("action16",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
+                           textAreaInput(paste0("action17",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
                        br(),
                        fixedRow(column(width=12,tippy("<h4> Score Feasibility </h4>", tooltip = '<p style="font-size:15px">Please select a score based on the evidence gathered.</p>', allowHTML=TRUE,placement="top"),
                                        radioButtons(paste0("actionfeas",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
@@ -285,7 +289,7 @@ server <- function(input, output, session) {
                        p("By assessing the evidence from different sources on effectiveness, costs, acceptability, and feasibility of the action, modifications can be considered that might improve it. For example, there may be strong evidence from the scientific literature to suggest that creating certain habitats for great crested newts and white-faced darters will be beneficial, but a practitioner's explicit or tacit local knowledge also suggests that these species have slightly different habitat preferences in this region, and so a modification to this action may be necessary for it to be locally effective. Or an action such as an education campaign may not be acceptable to a key stakeholder if it is designed in a certain way, so modifications are necessary to ensure the action is acceptable. A structural action may also be too expensive to implement using certain materials and to be more cost-effective and ultimately more feasible, the action must be modified by using cheaper materials."),
                        fixedRow(
                          column(tippy("<strong> Consider effectiveness of modifications </strong>", tooltip = '<p style="font-size:15px">e.g., We could try certain designs of culverts and tunnels that limit mortality...</p>', allowHTML=TRUE,placement="top"),
-                           textAreaInput(paste0("action17",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
+                           textAreaInput(paste0("action18",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
                        br(),
                        fixedRow(column(width=12,tippy("<h4> Score potential of modifications to improve action </h4>", tooltip = '<p style="font-size:15px">Please select a score based on the evidence gathered.</p>', allowHTML=TRUE,placement="top"),
                                        radioButtons(paste0("actionmod",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
@@ -300,7 +304,7 @@ server <- function(input, output, session) {
                          Uncertainty is also important to consider here, in particular to understand whether the evidence that has been gathered is sufficient in its reliability and relevance to make robust conclusions. It is also important to consider if there is conflicting evidence from different sources - for example, how much trust can be placed in the evidence drawn from the scientific literature versus evidence drawn from local knowledge?"),
                        fixedRow(
                          column(tippy("<strong> Summarise evidence for and against implementation </strong>", tooltip = '<p style="font-size:15px"> e.g., Overall, this action may be an effective action for us to use but could have negative impacts on amphibians that make this action unacceptably risky - not only in terms of damage to wildlife, but also to the reputation of an organisation even if the design of the culverts and tunnels was modified. The installation of these structures will also take time and require extensive permissions, alongside costing a substantial amount, so this is also unlikely to be a feasible action to implement.</p>', allowHTML=TRUE,placement="top"),
-                           textAreaInput(paste0("action18",id),label=NULL,width="200%",height="200%",rows=2),width=12))
+                           textAreaInput(paste0("action19",id),label=NULL,width="200%",height="200%",rows=2),width=12))
                        ),select=TRUE, session=session)
     
 })
@@ -410,7 +414,7 @@ server <- function(input, output, session) {
                          fixedRow(column(width=12,tippy("<strong> Score certainty in this score </strong>", tooltip = '<p style="font-size:15px">Please select a score based on your confidence in the score you have given (and the evidence gathered).</p>', allowHTML=TRUE,placement="top"),
                                          radioButtons(paste0("actioneffcert",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                          br(),
-                         h4("2.C. Assess costs and risks"),
+                         h4("2.C. Assess costs, risks, and wider benefits"),
                          h4("2.C.i. Assess financial and resource-based cost-effectiveness"),
                          em(strong("How much does the action cost financially and what are its resource requirements? What is the overall certainty (reliability) of these costs?")),
                          p("Resource requirements and financial costs form the core of assessing the cost-effectiveness of each action. These can be broadly defined as the resources and finances required to implement a conservation action."),
@@ -423,15 +427,19 @@ server <- function(input, output, session) {
                                          radioButtons(paste0("actioncost1",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                          fixedRow(column(width=12,tippy("<strong> Score certainty in this score </strong>", tooltip = '<p style="font-size:15px">Please select a score based on your confidence in the score you have given (and the evidence gathered).</p>', allowHTML=TRUE,placement="top"),
                                          radioButtons(paste0("actioncost1cert",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
-                         h4("2.C.ii. Assess the non-financial costs, risks, and benefits for non-target species, habitats, and stakeholders"),
-                         em(strong("What are the wider non-financial costs, risks, and benefits of implementing this action?")),
-                         p("Non-financial costs and benefits are the wider undesirable and desirable effects of the action on species, habitats, and stakeholders that are not the focus of the action. Costs may include socio-cultural considerations if the action did not target socio-cultural outcomes; for example, considering whether using pesticides, excluding access, or removing invasive species may have 'reputational costs' to the practitioner, stakeholders, or their organisations (i.e., has a negative impact on how they are perceived by the general public or other groups). "),
+                         h4("2.C.ii. Assess the non-financial costs, risks, and wider benefits for non-target species, habitats, and stakeholders"),
+                         em(strong("What are the wider non-financial costs, risks, and wider benefits of implementing this action?")),
+                         p("Non-financial costs and wider benefits are the wider undesirable and desirable effects of the action on species, habitats, and stakeholders that are not the focus of the action. Costs may include socio-cultural considerations if the action did not target socio-cultural outcomes; for example, considering whether using pesticides, excluding access, or removing invasive species may have 'reputational costs' to the practitioner, stakeholders, or their organisations (i.e., has a negative impact on how they are perceived by the general public or other groups). "),
                          fixedRow(
-                           column( tippy("<strong> Non-financial, non-target costs, risks, and benefits </strong>", tooltip = '<p style="font-size:15px">e.g., Tunnels and culverts could cause the deaths of other species of amphibians and animals, but if successful could also save many other species from suffering road mortality...</p>', allowHTML=TRUE,placement="top"),
+                           column( tippy("<strong> Non-financial, non-target costs and risks </strong>", tooltip = '<p style="font-size:15px">e.g., Tunnels and culverts could cause the deaths of other species of amphibians and animals...</p>', allowHTML=TRUE,placement="top"),
                                    textAreaInput(paste0("action14",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
                          br(),
-                         fixedRow(column(width=12,tippy("<h4> Score Non-financial, non-target costs, risks, and benefits </h4>", tooltip = '<p style="font-size:15px">Please select a score based on the evidence gathered.</p>', allowHTML=TRUE,placement="top"),
-                                         radioButtons(paste0("actioncost2",id),choices=c("Negative","Weakly negative","Neutral","Weakly positive","Positive","Trade-off", "Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
+                         fixedRow(
+                           column( tippy("<strong> Wider benefits </strong>", tooltip = '<p style="font-size:15px">e.g., Tunnels and culverts could also save many other species from suffering road mortality...</p>', allowHTML=TRUE,placement="top"),
+                                   textAreaInput(paste0("action15",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
+                         br(),
+                         fixedRow(column(width=12,tippy("<h4> Score balance between non-financial, non-target costs, risks, and wider benefits </h4>", tooltip = '<p style="font-size:15px">Please select a score based on the evidence gathered.</p>', allowHTML=TRUE,placement="top"),
+                                         radioButtons(paste0("actioncost2",id),choices=c("Costs/risks far greater","Costs/risks slightly greater","Trade-off between costs/risks and benefits","Benefits slightly greater","Benefits far greater", "Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                          fixedRow(column(width=12,tippy("<strong> Score certainty in this score </strong>", tooltip = '<p style="font-size:15px">Please select a score based on your confidence in the score you have given (and the evidence gathered).</p>', allowHTML=TRUE,placement="top"),
                                          radioButtons(paste0("actioncost2cert",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                          br(),
@@ -441,7 +449,7 @@ server <- function(input, output, session) {
                          p("Carefully consider whether it is acceptable to implement this action - do the outcomes of this action align to the values held by yourself and key stakeholders? Before you decide, it may be helpful to identify the major relevant values held by yourself and key stakeholders."),
                          fixedRow(
                            column(tippy("<strong> Acceptability </strong>", tooltip = '<p style="font-size:15px">e.g., If the tunnels and culverts cause many deaths of amphibians then our reputation could suffer. This is likely to be unacceptably risky.</p>', allowHTML=TRUE,placement="top"),
-                                  textAreaInput(paste0("action15",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
+                                  textAreaInput(paste0("action16",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
                          br(),
                          fixedRow(column(width=12,tippy("<h4> Score Acceptability </h4>", tooltip = '<p style="font-size:15px">Please select a score based on the evidence gathered.</p>', allowHTML=TRUE,placement="top"),
                                          radioButtons(paste0("actionacc",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
@@ -455,7 +463,7 @@ server <- function(input, output, session) {
                          p("Carefully consider whether it is feasible to implement this action."),
                          fixedRow(
                            column(tippy("<strong> Feasibility </strong>", tooltip = '<p style="font-size:15px">e.g., We would need to get permission to install these structures under the road, which could take time...</p>', allowHTML=TRUE,placement="top"),
-                                  textAreaInput(paste0("action16",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
+                                  textAreaInput(paste0("action17",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
                          br(),
                          fixedRow(column(width=12,tippy("<h4> Score Feasibility </h4>", tooltip = '<p style="font-size:15px">Please select a score based on the evidence gathered.</p>', allowHTML=TRUE,placement="top"),
                                          radioButtons(paste0("actionfeas",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
@@ -468,7 +476,7 @@ server <- function(input, output, session) {
                          p("By assessing the evidence from different sources on effectiveness, costs, acceptability, and feasibility of the action, modifications can be considered that might improve it. For example, there may be strong evidence from the scientific literature to suggest that creating certain habitats for great crested newts and white-faced darters will be beneficial, but a practitioner's explicit or tacit local knowledge also suggests that these species have slightly different habitat preferences in this region, and so a modification to this action may be necessary for it to be locally effective. Or an action such as an education campaign may not be acceptable to a key stakeholder if it is designed in a certain way, so modifications are necessary to ensure the action is acceptable. A structural action may also be too expensive to implement using certain materials and to be more cost-effective and ultimately more feasible, the action must be modified by using cheaper materials."),
                          fixedRow(
                            column(tippy("<strong> Consider effectiveness of modifications </strong>", tooltip = '<p style="font-size:15px">e.g., We could try certain designs of culverts and tunnels that limit mortality...</p>', allowHTML=TRUE,placement="top"),
-                                  textAreaInput(paste0("action17",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
+                                  textAreaInput(paste0("action18",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
                          br(),
                          fixedRow(column(width=12,tippy("<h4> Score potential of modifications to improve action </h4>", tooltip = '<p style="font-size:15px">Please select a score based on the evidence gathered.</p>', allowHTML=TRUE,placement="top"),
                                          radioButtons(paste0("actionmod",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
@@ -480,10 +488,10 @@ server <- function(input, output, session) {
                          em(strong("How likely is this action to be locally effective based on all the evidence and information you have gathered?")),
                          em(strong("What is the overall level of uncertainty associated with these conclusions?")),
                          p("Once the previous steps have been considered, it may be useful to summarise the likely local effectiveness of each action (whether modified or not), and the important costs, acceptability, and feasibility considerations that come with them. This draws together all the evidence previously gathered so that an evidence-informed decision can be made in the next step, considering the relative advantages and disadvantages of each action alongside each other.
-                         Uncertainty is also important to consider here, in particular to understand whether the evidence that has been gathered is sufficient in its reliability and relevance to make robust conclusions. It is also important to consider if there is conflicting evidence from different sources - for example, how much trust can be placed in the evidence drawn from the scientific literature versus evidence drawn from local knowledge?"),
+                           Uncertainty is also important to consider here, in particular to understand whether the evidence that has been gathered is sufficient in its reliability and relevance to make robust conclusions. It is also important to consider if there is conflicting evidence from different sources - for example, how much trust can be placed in the evidence drawn from the scientific literature versus evidence drawn from local knowledge?"),
                          fixedRow(
                            column(tippy("<strong> Summarise evidence for and against implementation </strong>", tooltip = '<p style="font-size:15px"> e.g., Overall, this action may be an effective action for us to use but could have negative impacts on amphibians that make this action unacceptably risky - not only in terms of damage to wildlife, but also to the reputation of an organisation even if the design of the culverts and tunnels was modified. The installation of these structures will also take time and require extensive permissions, alongside costing a substantial amount, so this is also unlikely to be a feasible action to implement.</p>', allowHTML=TRUE,placement="top"),
-                                  textAreaInput(paste0("action18",id),label=NULL,width="200%",height="200%",rows=2),width=12))
+                                  textAreaInput(paste0("action19",id),label=NULL,width="200%",height="200%",rows=2),width=12))
                          ),select=TRUE, session=session)
   }
   })
@@ -495,13 +503,13 @@ server <- function(input, output, session) {
                        function(i){data.table("Action"=idlist[i],
                                               "Local Effectiveness"=input[[glue("actioneff",idlist[i])]],
                                               "Cost-effectiveness"=input[[glue("actioncost1",idlist[i])]],
-                                              "Wider non-target costs, risks, and benefits"=input[[glue("actioncost2",idlist[i])]],
+                                              "Balance between wider non-target costs, risks, and benefits"=input[[glue("actioncost2",idlist[i])]],
                                               "Acceptability"=input[[glue("actionacc",idlist[i])]],
                                               "Feasibility"=input[[glue("actionfeas",idlist[i])]],
                                               "Modification potential"=input[[glue("actionmod",idlist[i])]],
                                               "Local Effectiveness Certainty"=input[[glue("actioneffcert",idlist[i])]],
                                               "Cost-effectiveness Certainty"=input[[glue("actioncost1cert",idlist[i])]],
-                                              "Wider non-target costs, risks, and benefits Certainty"=input[[glue("actioncost2cert",idlist[i])]],
+                                              "Balance between wider non-target costs, risks, and benefits Certainty"=input[[glue("actioncost2cert",idlist[i])]],
                                               "Acceptability Certainty"=input[[glue("actionacccert",idlist[i])]],
                                               "Feasibility Certainty"=input[[glue("actionfeascert",idlist[i])]],
                                               "Modification potential Certainty"=input[[glue("actionmodcert",idlist[i])]]
@@ -522,14 +530,14 @@ server <- function(input, output, session) {
               
     ) %>% formatStyle(columns="Local Effectiveness", valueColumns="Local Effectiveness Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
      formatStyle(columns="Cost-effectiveness", valueColumns="Cost-effectiveness Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
-      formatStyle(columns="Wider non-target costs, risks, and benefits", valueColumns="Wider non-target costs, risks, and benefits Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+      formatStyle(columns="Balance between wider non-target costs, risks, and benefits", valueColumns="Balance between wider non-target costs, risks, and benefits Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
         formatStyle(columns="Acceptability", valueColumns="Acceptability Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
           formatStyle(columns="Feasibility", valueColumns="Feasibility Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
             formatStyle(columns="Modification potential", valueColumns="Modification potential Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))
     }
   else{
     table1 <- data.frame(cbind(rep("Start assessing actions in the tool to display a summary output here."),"","","","","",""))
-    colnames(table1)<- c("Action","Local Effectiveness", "Cost-effectiveness", "Wider non-target costs, risks, and benefits", "Acceptability","Feasibility","Modification potential")
+    colnames(table1)<- c("Action","Local Effectiveness", "Cost-effectiveness", "Balance between wider non-target costs, risks, and benefits", "Acceptability","Feasibility","Modification potential")
     datatable(table1,rownames=FALSE,height="100%",
               extensions=c('ColReorder','Responsive','FixedHeader'),
               options = list(searching=FALSE, paging=FALSE, info=FALSE,
@@ -547,7 +555,7 @@ server <- function(input, output, session) {
     idlist <- updateidlist$data
     if(length(idlist)>0){
       lapply(1:length(idlist), function(i){
-        HTML(paste0(paste0('<b>',idlist[i],sep='</b>'), paste0(": ",input[[glue("action18",idlist[i])]], sep = '<br/><br/>')))
+        HTML(paste0(paste0('<b>',idlist[i],sep='</b>'), paste0(": ",input[[glue("action19",idlist[i])]], sep = '<br/><br/>')))
              })
     }
     else{HTML(paste0("(Please complete Step 2 to display summary text here for different actions)."))}
@@ -570,7 +578,7 @@ server <- function(input, output, session) {
       
       content = function(file) {
         library(rmarkdown)
-          out <- render('/srv/shiny-server/evidence2decisiontool/report.Rmd', switch(
+          out <- render('report.Rmd', switch(
           input$format,
           PDF = pdf_document(), HTML = html_document(), Word = word_document()
         ))
@@ -604,25 +612,27 @@ server <- function(input, output, session) {
              function(i){
                cat("# ",idlist[i],"  \n  \n")
                cat("## Describe action  \n",input[[glue("action07",idlist[i])]],"  \n  \n")
-               cat("## Focus of action  \n",input[[glue("action08",idlist[i])]],"  \n  \n")
-               cat("## Scientific evidence and uncertainty  \n")
-               cat("### Evidence sources considered  \n",input[[glue("action09",idlist[i])]],"  \n  \n")
-               cat("### Detailed assessment of evidence  \n",input[[glue("action10",idlist[i])]],"  \n  \n")
-               cat("### Summarise assessment of evidence  \n",input[[glue("action11",idlist[i])]],"  \n  \n")
-               cat("## Undocumented knowledge  \n",input[[glue("action12",idlist[i])]],"  \n  \n")
-               cat("## Assessment of effectiveness  \n","Effectiveness: ",input[[glue("actioneff",idlist[i])]],"  \n  \n","Certainty: ", input[[glue("actioneffcert",idlist[i])]],"  \n  \n")
+               cat("## Focus of action  \n",input[[glue("action08",idlist[i])]],"  \n  \n  \n")
+               cat("## Assess desirable and undesirable effects on the focal target and uncertainty  \n  \n")
+               cat("### Scientific literature  \n")
+               cat("#### Evidence sources considered  \n",input[[glue("action09",idlist[i])]],"  \n  \n")
+               cat("#### Detailed assessment of evidence  \n",input[[glue("action10",idlist[i])]],"  \n  \n")
+               cat("#### Summarise assessment of scientific evidence  \n",input[[glue("action11",idlist[i])]],"  \n  \n  \n")
+               cat("### Undocumented knowledge  \n",input[[glue("action12",idlist[i])]],"  \n  \n")
+               cat("#### Assessment of effectiveness  \n","Score: ",input[[glue("actioneff",idlist[i])]],"  \n  \n","Certainty: ", input[[glue("actioneffcert",idlist[i])]],"  \n  \n  \n")
                cat("## Costs and risks  \n")
                cat("### Financial and resource-based costs  \n",input[[glue("action13",idlist[i])]],"  \n  \n")
-               cat("### Assessment of cost-effectiveness  \n","Cost-effectiveness: ",input[[glue("actioncost1",idlist[i])]],"  \n  \n","Certainty: ",input[[glue("actioncost1cert",idlist[i])]],"  \n  \n")
-               cat("### Non-financial and non-target costs, risks, and benefits  \n",input[[glue("action14",idlist[i])]],"  \n  \n")
-               cat("### Assessment of Non-financial and non-target costs, risks, and benefits  \n","Wider non-target costs, risks, and benefits: ",input[[glue("actioncost2",idlist[i])]],"  \n  \n","Certainty: ",input[[glue("actioncost2cert",idlist[i])]],"  \n  \n")
-               cat("## Acceptability  \n",input[[glue("action15",idlist[i])]],"  \n  \n")
-               cat("## Assessment of Acceptability  \n","Acceptability: ",input[[glue("actionacc",idlist[i])]],"  \n  \n","Certainty: ",input[[glue("actionacccert",idlist[i])]],"  \n  \n")
-               cat("## Feasibility  \n",input[[glue("action16",idlist[i])]],"  \n  \n")
-               cat("## Assessment of Feasibility  \n","Feasibility: ",input[[glue("actionfeas",idlist[i])]],"  \n  \n","Certainty: ",input[[glue("actionfeascert",idlist[i])]],"  \n  \n")
-               cat("## Consider modifications  \n",input[[glue("action17",idlist[i])]],"  \n  \n")
-               cat("## Assessment of Modifications  \n","Potential of modifications to improve action: ",input[[glue("actionmod",idlist[i])]],"  \n  \n","Certainty: ",input[[glue("actionmodcert",idlist[i])]],"  \n  \n")
-               cat("## Summarise likely local effectiveness of action and uncertainty  \n",input[[glue("action18",idlist[i])]],"  \n  \n")
+               cat("#### Assessment of cost-effectiveness  \n","Score: ",input[[glue("actioncost1",idlist[i])]],"  \n  \n","Certainty: ",input[[glue("actioncost1cert",idlist[i])]],"  \n  \n  \n")
+               cat("### Non-financial and non-target costs and risks  \n",input[[glue("action14",idlist[i])]],"  \n  \n")
+               cat("### Wider benefits  \n",input[[glue("action15",idlist[i])]],"  \n  \n")
+               cat("#### Assessment of balance between wider non-target costs, risks, and benefits  \n","Score: ",input[[glue("actioncost2",idlist[i])]],"  \n  \n","Certainty: ",input[[glue("actioncost2cert",idlist[i])]],"  \n  \n  \n")
+               cat("## Acceptability  \n",input[[glue("action16",idlist[i])]],"  \n  \n")
+               cat("## Assessment of Acceptability  \n","Score: ",input[[glue("actionacc",idlist[i])]],"  \n  \n","Certainty: ",input[[glue("actionacccert",idlist[i])]],"  \n  \n  \n")
+               cat("## Feasibility  \n",input[[glue("action17",idlist[i])]],"  \n  \n")
+               cat("## Assessment of Feasibility  \n","Score: ",input[[glue("actionfeas",idlist[i])]],"  \n  \n","Certainty: ",input[[glue("actionfeascert",idlist[i])]],"  \n  \n  \n")
+               cat("## Consider modifications  \n",input[[glue("action18",idlist[i])]],"  \n  \n")
+               cat("## Assessment of potential for modifications to improve action  \n","Score: ",input[[glue("actionmod",idlist[i])]],"  \n  \n","Certainty: ",input[[glue("actionmodcert",idlist[i])]],"  \n  \n  \n")
+               cat("## Summarise likely local effectiveness of action and uncertainty  \n",input[[glue("action19",idlist[i])]],"  \n  \n")
                cat("\\newpage  \n  \n")
              })
     }

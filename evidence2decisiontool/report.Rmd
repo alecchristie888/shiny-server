@@ -8,15 +8,15 @@ output:
     reference_docx: "customrep.docx"
 ---
 
-# 1. Define the Decision Context
-
-## Name
+### Name
 `r paste(p(input$reportname))`
 
-## Organisation
+### Organisation
 `r paste(p(input$reportorgname))`
 
-## What is the problem?
+# 1. Define the Decision Context
+
+### What is the problem?
 `r paste(p(input$action01))`
 
 ### Location
@@ -28,8 +28,10 @@ output:
 ### What is the focal target?
 `r paste(p(input$action04))`
 
-## What is the relevant ecological, physical, and social context underlying the decision? What constraints are there on your decision-making?
+### What is the relevant ecological, physical, and social context underlying the decision? What constraints are there on your decision-making?
 `r paste(p(input$action05))`
+
+\newpage
 
 # 2. Gather Evidence
 
@@ -48,7 +50,7 @@ for(i in 1:length(report_text)){
 \newpage
 
 # 3. Make an Evidence-Informed Decision
-## Summary assessment table for each action 
+### Summary assessment table for each action 
 Table legend: White = Very low certainty or unsure. Pale yellow = Low certainty. Yellow = Moderate certainty. Gold = High certainty.
 ```{r chunklabel, dev='png', fig.align="left", fig.dim=c(3,0.5),out.width="100%",out.height="100%",dpi=300,echo=FALSE, cache=FALSE, warning = FALSE, message = FALSE, tidy=TRUE} 
 library(DT) 
@@ -60,13 +62,13 @@ if(length(idlist)>0){
                        function(i){data.table("Action"=idlist[i],
                                               "Local Effectiveness"=input[[glue("actioneff",idlist[i])]],
                                               "Cost-effectiveness"=input[[glue("actioncost1",idlist[i])]],
-                                              "Wider non-target costs, risks, and benefits"=input[[glue("actioncost2",idlist[i])]],
+                                              "Balance between wider non-target costs, risks, and benefits"=input[[glue("actioncost2",idlist[i])]],
                                               "Acceptability"=input[[glue("actionacc",idlist[i])]],
                                               "Feasibility"=input[[glue("actionfeas",idlist[i])]],
                                               "Modification potential"=input[[glue("actionmod",idlist[i])]],
                                               "Local Effectiveness Certainty"=input[[glue("actioneffcert",idlist[i])]],
                                               "Cost-effectiveness Certainty"=input[[glue("actioncost1cert",idlist[i])]],
-                                              "Wider non-target costs, risks, and benefits Certainty"=input[[glue("actioncost2cert",idlist[i])]],
+                                              "Balance between wider non-target costs, risks, and benefits Certainty"=input[[glue("actioncost2cert",idlist[i])]],
                                               "Acceptability Certainty"=input[[glue("actionacccert",idlist[i])]],
                                               "Feasibility Certainty"=input[[glue("actionfeascert",idlist[i])]],
                                               "Modification potential Certainty"=input[[glue("actionmodcert",idlist[i])]]
@@ -85,14 +87,14 @@ if(length(idlist)>0){
               editable="cell"
     ) %>% formatStyle(columns="Local Effectiveness", valueColumns="Local Effectiveness Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
      formatStyle(columns="Cost-effectiveness", valueColumns="Cost-effectiveness Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
-      formatStyle(columns="Wider non-target costs, risks, and benefits", valueColumns="Wider non-target costs, risks, and benefits Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+      formatStyle(columns="Balance between wider non-target costs, risks, and benefits", valueColumns="Balance between wider non-target costs, risks, and benefits Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
         formatStyle(columns="Acceptability", valueColumns="Acceptability Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
           formatStyle(columns="Feasibility", valueColumns="Feasibility Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
             formatStyle(columns="Modification potential", valueColumns="Modification potential Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))
     }
 if(length(idlist)==0){
     table1 <- data.frame(cbind(rep("Start assessing actions in the tool to display a summary output here."),"","","","","",""))
-    colnames(table1)<- c("Action","Local Effectiveness", "Cost-effectiveness", "Wider non-target costs, risks, and benefits", "Acceptability","Feasibility","Modification potential")
+    colnames(table1)<- c("Action","Local Effectiveness", "Cost-effectiveness", "Balance between wider non-target costs, risks, and benefits", "Acceptability","Feasibility","Modification potential")
     datatable(table1,rownames=FALSE,height="100%",
               extensions=c('ColReorder','Responsive','FixedHeader'),
               options = list(searching=FALSE, paging=FALSE, info=FALSE,
@@ -104,13 +106,13 @@ if(length(idlist)==0){
   }
 ```
 
-## Which action(s), if any, are the best ones to implement to achieve the ultimate goal(s) you defined at the beginning? Name and justify your choices.
+### Which action(s), if any, are the best ones to implement to achieve the ultimate goal(s) you defined at the beginning? Name and justify your choices.
 `r paste(p(input$action20))`
 
-## Which action(s) should not be implemented? Name and justify your choices.
+### Which action(s) should not be implemented? Name and justify your choices.
 `r paste(p(input$action21))`
 
-## What is your overall decision, what are the next steps, and why?
+### What is your overall decision, what are the next steps, and why?
 `r paste(p(input$action22))`
 
 
