@@ -113,7 +113,7 @@ Score: Moderate.
 Certainty: Moderate.
 
 
-## Summarise all the evidence for action
+## Summarise the evidence gathered
 Overall, this action may be an effective action for us to use but could have negative impacts on amphibians that make this action unacceptably risky - not only in terms of damage to wildlife, but also to the organisation's reputation even if the design of the culverts and tunnels was modified. The installation of these structures will also take time and require extensive permissions, alongside costing a substantial amount, so this is also unlikely to be a feasible action to implement.
 
 \pagebreak
@@ -193,7 +193,7 @@ Score: Moderate.
 Certainty: Moderate.
 
 
-## Summarise all the evidence for action
+## Summarise the evidence gathered
 This action appears to be relatively cost-effective and feasible to implement, and should be effective on the reserve if we can use the correct types of fencing and use it at certain times of year. We may need to get permission to install this, but as it may be a temporary measure at certain times of the year, this seems acceptable and feasible to implement.
 
 \pagebreak
@@ -274,7 +274,7 @@ Score: Very low.
 Certainty: High.
 
 
-## Summarise all the evidence for action
+## Summarise the evidence gathered
 The action does not seem likely to be locally effective and unlikely to be feasible to implement in any case. It may raise some publicity but on balance it does not seem to justify the cost of and to volunteers in undertaking fairly intensive work for long hours at unsociable times of day (even just during the migration season). 
 
 \pagebreak

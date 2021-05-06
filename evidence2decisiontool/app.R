@@ -297,7 +297,7 @@ server <- function(input, output, session) {
                                        radioButtons(paste0("actionmodcert",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                        br(),
                        br(),
-                       h4("2.G. Summarise the likely local effectiveness of action"),
+                       h4("2.G. Summarise the evidence gathered"),
                        em(strong("How likely is this action to be locally effective based on all the evidence and information you have gathered?")),
                        em(strong("What is the overall level of uncertainty associated with these conclusions?")),
                        p("Once the previous steps have been considered, it may be useful to summarise the likely local effectiveness of each action (whether modified or not), and the important costs, acceptability, and feasibility considerations that come with them. This draws together all the evidence previously gathered so that an evidence-informed decision can be made in the next step, considering the relative advantages and disadvantages of each action alongside each other.
@@ -632,7 +632,7 @@ server <- function(input, output, session) {
                cat("## Assessment of Feasibility  \n","Score: ",input[[glue("actionfeas",idlist[i])]],"  \n  \n","Certainty: ",input[[glue("actionfeascert",idlist[i])]],"  \n  \n  \n")
                cat("## Consider modifications  \n",input[[glue("action18",idlist[i])]],"  \n  \n")
                cat("## Assessment of potential for modifications to improve action  \n","Score: ",input[[glue("actionmod",idlist[i])]],"  \n  \n","Certainty: ",input[[glue("actionmodcert",idlist[i])]],"  \n  \n  \n")
-               cat("## Summarise likely local effectiveness of action and uncertainty  \n",input[[glue("action19",idlist[i])]],"  \n  \n")
+               cat("## Summarise the evidence gathered  \n",input[[glue("action19",idlist[i])]],"  \n  \n")
                cat("\\newpage  \n  \n")
              })
     }
