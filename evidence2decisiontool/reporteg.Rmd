@@ -279,7 +279,7 @@ The action does not seem likely to be locally effective and unlikely to be feasi
 
 \pagebreak
 
-# 3. Make an Evidence-Informed Decision
+# 3. Make an Evidence-Based Decision
 ### Summary assessment table for each action 
 Table legend: White = Very low certainty or unsure. Pale yellow = Low certainty. Yellow = Moderate certainty. Gold = High certainty.
 ```{r chunklabel, dev='png', fig.align="left", fig.dim=c(3,0.5),out.width="100%",out.height="100%",dpi=300,echo=FALSE, cache=FALSE, warning = FALSE, message = FALSE, tidy=TRUE} 
