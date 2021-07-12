@@ -18,7 +18,7 @@ ui <- function(request){fluidPage(
              windowTitle = "Evidence-to-Decision tool"),
   titlePanel(title = "Evidence-to-Decision tool"),
   sidebarLayout(
-    sidebarPanel(width=2,
+    sidebarPanel(width=3,
       h4("Bookmark your work"),
       p("We recommended that you bookmark regularly to save your work. Your browser URL will update each time you do this (leaving the page or refreshing before doing so could lose your work)."),
       bookmarkButton(label="Bookmark", title="Bookmarking your work will create a new unique URL in your browser that saves your work."),
@@ -34,12 +34,12 @@ ui <- function(request){fluidPage(
       textInput("newactionnamerem",label=NULL, value=NULL, placeholder = "e.g., Install barrier fencing along roads"),width=12)),
       actionButton("remove", "Remove this action")
       ),
-    mainPanel(width=10,
+    mainPanel(width=9,
       navbarPage("",id="maintabs",
                  tabPanel("Introduction",id="tab01",value='tab01_val',
                           tags$style(
                             ".navbar-nav li a {
-                            font-size: 20px;
+                            font-size: 17px;
                             font-weight: bold;
                               }
                             "
@@ -61,7 +61,7 @@ ui <- function(request){fluidPage(
                           br(),
                           tags$img(src="image3.png", width = 700, height = 780),
                           br(),
-                          p("This tool was created by Dr Alec Christie, University of Cambridge. Thank you to all the practitioners who took part in the co-design of this tool, including (in no particular order): Steve Weeks, Alison Ruyter, Rory Harding, and Paul Tinsley-Marshall from the Kent Wildlife Trust; Tom McPherson from Ingleby Farms (also for giving feedback on the manuscript); the Woodland Trust; Peoples’ Trust for Endangered Species; Jon Flanders and Winifred Frick at Bat Conservation International; David O’Brien at NatureScot; Kathy Wormald at Froglife; the Medway Valley Countryside Partnership; Sheffield & Rotherham Wildlife Trust; Bedfordshire, Buckinghamshire, and Oxfordshire Wildlife Trust; Catherine McNicol at Gloucestershire Wildlife Trust. Thanks also to Harriet Downey, Matthew Grainger, Thomas White, Michael Winter, and William Sutherland for their help in producing the tool.")
+                          p("This tool was created by Dr Alec Christie, University of Cambridge. Thank you to all the practitioners who took part in the co-design of this tool, including (in no particular order): Steve Weeks, Alison Ruyter, Rory Harding, and Paul Tinsley-Marshall from the Kent Wildlife Trust; Tom McPherson from Ingleby Farms (also for giving feedback on the manuscript); the Woodland Trust; Peoples’ Trust for Endangered Species; Jon Flanders and Winifred Frick at Bat Conservation International; David O’Brien at NatureScot; Kathy Wormald at Froglife; the Medway Valley Countryside Partnership; Sheffield & Rotherham Wildlife Trust; Bedfordshire, Buckinghamshire, and Oxfordshire Wildlife Trust; Catherine McNicol at Gloucestershire Wildlife Trust. Thanks to an anonymous reviewer and Nick Salafsky for their comments to improve the tool too. Finally, thanks to Harriet Downey, Matthew Grainger, Thomas White, Michael Winter, and William Sutherland for their help in producing the tool.")
                           ),
                  tabPanel("1. Define the Decision Context",id="tab02",value='tab02_val',
                           em(strong("What is the problem and desired outcomes? What is the relevant ecological, physical, and social context underlying the decision?")),
@@ -123,7 +123,7 @@ ui <- function(request){fluidPage(
                           paste("For example, we would recommend that actions that avoid and minimize threats should be prioritised, before restoration and compensatory measures are considered.
                                 Several types of biases can also affect your decision-making, so we recommend reading the"),
                           a("E2D Tool Guide", href="e2dguide.pdf", target="_blank"),
-                          paste("which provides some common pitfalls to be aware of when evaluating the evidence for and against different actions."),
+                          paste("which provides some common pitfalls to be aware of when evaluating the evidence for and against different actions. Finally, we would also suggest you consider whether taking no action may be the optimal decision - this is particularly important if there are great risks associated with action or there is substantial uncertainty in the evidence."),
                           br(),
                           br(),
                           fixedRow(column( tippy("<strong> <em> Which action(s), if any, are the best ones to implement to achieve the ultimate goal(s) you defined at the beginning? Name and justify your choices. </em> </strong>", tooltip = '<p style="font-size:15px">e.g., Install barrier fencing along roads: This action has been shown to be effective from the evidence I have considered if it is implemented properly. The costs will be less than installing culverts or tunnels, and it should take less time to get permissions to install the fencing along the road. If we target the fencing at strategic positions, and make it high enough so Natterjack toads not climb over it, we can funnel them to natural watercourses underneath the road.</p>', allowHTML=TRUE,placement="top"),
@@ -132,7 +132,7 @@ ui <- function(request){fluidPage(
                             textAreaInput("action21",label=NULL,width="200%",height="200%",rows=3),width=12)),
                           h4("3.B. Justify overall decision and next steps"),
                           em(strong("What is the overall decision, what are the next steps, and why?")),
-                          p("Summarise your overall decision and the next steps you will take. This could be implementing these actions, pausing to make a more detailed assessment, gather more evidence, or decide to do nothing."),
+                          p("Summarise your overall decision and the next steps you will take. This could be implementing these actions, pausing to make a more detailed assessment, gather more evidence, or decide to do nothing. We encourage you to revisit the tool in the future to update your decision based on new evidence, insights, and information - including if you generate evidence by monitoring any actions that you decide to implement. "),
                           fixedRow(column( tippy("<strong> Decision and next steps </strong>", tooltip = '<p style="font-size:15px">e.g., We will now investigate the correct height, material, and length of fencing needed and identify key strategic points along the road to place the fencing. We will also request permission to install the fencing and trial it during the next migration season. We will write up the findings of this trial in a report, comparing it to previous years mortality, and publish this online through a practitioner-focused journal such as the Conservation Evidence journal.</p>', allowHTML=TRUE,placement="top"),
                             textAreaInput("action22",label=NULL,width="200%",height="200%",rows=3),width=12)),
                           br(),
@@ -203,7 +203,7 @@ server <- function(input, output, session) {
                        fixedRow(
                          column(width=12,tippy("<strong> Summarise assessment of evidence </strong>", tooltip = '<p style="font-size:15px"> e.g., Overall, based on the sources above this action is likely to be beneficial, but we need to consider how to apply it effectively in our local setting. </p>', allowHTML=TRUE,placement="top"),
                             textAreaInput(paste0("action11",id),label=NULL,width="200%",height="200%",rows=2))),
-                                           tags$img(src="evidencehierarchy.png", width = 682, height = 305),
+                       tags$img(src="evidencehierarchy.png", width = 682, height = 305),
                        br(),
                        paste("An evidence hierarchy tool adapted from "), 
                        a("Mupepele et al. (2016)", href="https://doi.org/10.1890/15-0595", target="_blank"), 
@@ -211,7 +211,26 @@ server <- function(input, output, session) {
                        a("Christie et al. 2021.",href="https://www.nature.com/articles/s41467-020-20142-y/figures/1", target="_blank"),
                        br(),
                        br(),
-                       h4("2.B.ii. Undocumented knowledge"),
+                       fixedRow(column(width=12,tippy("<h4> Score effectiveness based on scientific literature </h4>", tooltip = '<p style="font-size:15px">Please select a score based on the evidence gathered. Note you should only consider effectiveness in terms of the focal target (i.e., harmful means harmful to the focal target, not more widely - side-effects are considered later).</p>', allowHTML=TRUE,placement="top"),
+                                       radioButtons(paste0("actioneff",id),choices=c("Harmful","Ineffective","Weakly effective","Moderately effective","Highly effective","Trade-off between benefits and harms","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
+                       fixedRow(column(width=12,tippy("<strong> Score certainty in this score </strong>", tooltip = '<p style="font-size:15px">Please select a score based on your confidence in the score you have given (and the evidence gathered).</p>', allowHTML=TRUE,placement="top"),
+                                       radioButtons(paste0("actioneffcert",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
+                       br(),
+                       br(),
+                       h4("2.B.ii. Decision-makers' own data, written experience, and monitoring"),
+                       em(strong("How locally effective is this action likely to be based on your own monitoring data or notes? What is the overall certainty (reliability) of this evidence?")),
+                       br(),
+                       br(),
+                       fixedRow(
+                         column(tippy("<strong> Own data, written experience, and monitoring </strong>", tooltip = '<p style="font-size:15px"> e.g., The last ranger sent me a photo and some notes on a previous trial of a tunnel under the old road, that has since been resurfaced and rerouted, when it was first built did not record any Natterjack toads using it over a two year period. </p>', allowHTML=TRUE,placement="top"),
+                                textAreaInput(paste0("action12a",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
+                       br(),
+                       fixedRow(column(width=12,tippy("<h4> Score effectiveness based on own data, written experience, and monitoring </h4>", tooltip = '<p style="font-size:15px">Please select a score based on the evidence gathered. Note you should only consider effectiveness in terms of the focal target (i.e., harmful means harmful to the focal target, not more widely - side-effects are considered later).</p>', allowHTML=TRUE,placement="top"),
+                                       radioButtons(paste0("actioneffown",id),choices=c("Harmful","Ineffective","Weakly effective","Moderately effective","Highly effective","Trade-off between benefits and harms","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
+                       fixedRow(column(width=12,tippy("<strong> Score certainty in this score </strong>", tooltip = '<p style="font-size:15px">Please select a score based on your confidence in the score you have given (and the evidence gathered).</p>', allowHTML=TRUE,placement="top"),
+                                       radioButtons(paste0("actioneffcertown",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
+                       br(),
+                       h4("2.B.iii. Undocumented knowledge"),
                        em(strong("How locally effective is this action likely to be based on you and your stakeholders’ knowledge? What is the overall certainty (reliability) of this knowledge?")),
                        br(),
                        paste("We use the term ‘undocumented knowledge’ for the purposes of this tool to specify information that is not published or written down, which typically includes a knowledge holder’s intuition, experience, wisdom, and values (also known as ‘tacit’ knowledge).
@@ -222,13 +241,13 @@ server <- function(input, output, session) {
                        br(),
                        br(),
                        fixedRow(
-                         column(tippy("<strong> Undocumented knowledge </strong>", tooltip = '<p style="font-size:15px"> e.g., The last ranger sent me a photo and some notes on a previous trial of a tunnel under the old road, that has since been resurfaced and rerouted, when it was first built did not record any Natterjack toads using it over a two year period. I have never seen them use any Natterjack toads using tunnels and culverts in other places on this reserve. </p>', allowHTML=TRUE,placement="top"),
-                           textAreaInput(paste0("action12",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
+                         column(tippy("<strong> Undocumented knowledge </strong>", tooltip = '<p style="font-size:15px"> e.g., I have never seen any Natterjack toads using tunnels and culverts in other places on this reserve. </p>', allowHTML=TRUE,placement="top"),
+                           textAreaInput(paste0("action12b",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
                        br(),
-                       fixedRow(column(width=12,tippy("<h4> Score effectiveness based on scientific literature and undocumented knowledge </h4>", tooltip = '<p style="font-size:15px">Please select a score based on the evidence gathered. Note you should only consider effectiveness in terms of the focal target (i.e., harmful means harmful to the focal target, not more widely - side-effects are considered later).</p>', allowHTML=TRUE,placement="top"),
-                                       radioButtons(paste0("actioneff",id),choices=c("Harmful","Ineffective","Weakly effective","Moderately effective","Highly effective","Trade-off between benefits and harms","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
+                       fixedRow(column(width=12,tippy("<h4> Score effectiveness based on undocumented knowledge </h4>", tooltip = '<p style="font-size:15px">Please select a score based on the evidence gathered. Note you should only consider effectiveness in terms of the focal target (i.e., harmful means harmful to the focal target, not more widely - side-effects are considered later).</p>', allowHTML=TRUE,placement="top"),
+                                       radioButtons(paste0("actioneffknow",id),choices=c("Harmful","Ineffective","Weakly effective","Moderately effective","Highly effective","Trade-off between benefits and harms","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                        fixedRow(column(width=12,tippy("<strong> Score certainty in this score </strong>", tooltip = '<p style="font-size:15px">Please select a score based on your confidence in the score you have given (and the evidence gathered).</p>', allowHTML=TRUE,placement="top"),
-                                       radioButtons(paste0("actioneffcert",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
+                                       radioButtons(paste0("actioneffcertknow",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                        br(),
                        h4("2.C. Assess costs, risks, and wider benefits"),
                        h4("2.C.i. Assess financial and resource-based cost-effectiveness"),
@@ -243,6 +262,7 @@ server <- function(input, output, session) {
                                        radioButtons(paste0("actioncost1",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                        fixedRow(column(width=12,tippy("<strong> Score certainty in this score </strong>", tooltip = '<p style="font-size:15px">Please select a score based on your confidence in the score you have given (and the evidence gathered).</p>', allowHTML=TRUE,placement="top"),
                                        radioButtons(paste0("actioncost1cert",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
+                       br(),
                        h4("2.C.ii. Assess the non-financial costs, risks, and wider benefits for non-target species, habitats, and stakeholders"),
                        em(strong("What are the wider non-financial costs, risks, and wider benefits of implementing this action?")),
                        p("Non-financial costs and wider benefits are the wider undesirable and desirable effects of the action on species, habitats, and stakeholders that are not the focus of the action. Costs may include socio-cultural considerations if the action did not target socio-cultural outcomes; for example, considering whether using pesticides, excluding access, or removing invasive species may have 'reputational costs' to the practitioner, stakeholders, or their organisations (i.e., has a negative impact on how they are perceived by the general public or other groups). "),
@@ -398,7 +418,26 @@ server <- function(input, output, session) {
                          a("Christie et al. 2021.",href="https://www.nature.com/articles/s41467-020-20142-y/figures/1", target="_blank"),
                          br(),
                          br(),
-                         h4("2.B.ii. Undocumented knowledge"),
+                         fixedRow(column(width=12,tippy("<h4> Score effectiveness based on scientific literature </h4>", tooltip = '<p style="font-size:15px">Please select a score based on the evidence gathered. Note you should only consider effectiveness in terms of the focal target (i.e., harmful means harmful to the focal target, not more widely - side-effects are considered later).</p>', allowHTML=TRUE,placement="top"),
+                                         radioButtons(paste0("actioneff",id),choices=c("Harmful","Ineffective","Weakly effective","Moderately effective","Highly effective","Trade-off between benefits and harms","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
+                         fixedRow(column(width=12,tippy("<strong> Score certainty in this score </strong>", tooltip = '<p style="font-size:15px">Please select a score based on your confidence in the score you have given (and the evidence gathered).</p>', allowHTML=TRUE,placement="top"),
+                                         radioButtons(paste0("actioneffcert",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
+                         br(),
+                         br(),
+                         h4("2.B.ii. Decision-makers' own data, written experience, and monitoring"),
+                         em(strong("How locally effective is this action likely to be based on your own monitoring data or notes? What is the overall certainty (reliability) of this evidence?")),
+                         br(),
+                         br(),
+                         fixedRow(
+                           column(tippy("<strong> Own data, written experience, and monitoring </strong>", tooltip = '<p style="font-size:15px"> e.g., The last ranger sent me a photo and some notes on a previous trial of a tunnel under the old road, that has since been resurfaced and rerouted, when it was first built did not record any Natterjack toads using it over a two year period. </p>', allowHTML=TRUE,placement="top"),
+                                  textAreaInput(paste0("action12a",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
+                         br(),
+                         fixedRow(column(width=12,tippy("<h4> Score effectiveness based on own data, written experience, and monitoring </h4>", tooltip = '<p style="font-size:15px">Please select a score based on the evidence gathered. Note you should only consider effectiveness in terms of the focal target (i.e., harmful means harmful to the focal target, not more widely - side-effects are considered later).</p>', allowHTML=TRUE,placement="top"),
+                                         radioButtons(paste0("actioneffown",id),choices=c("Harmful","Ineffective","Weakly effective","Moderately effective","Highly effective","Trade-off between benefits and harms","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
+                         fixedRow(column(width=12,tippy("<strong> Score certainty in this score </strong>", tooltip = '<p style="font-size:15px">Please select a score based on your confidence in the score you have given (and the evidence gathered).</p>', allowHTML=TRUE,placement="top"),
+                                         radioButtons(paste0("actioneffcertown",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
+                         br(),
+                         h4("2.B.iii. Undocumented knowledge"),
                          em(strong("How locally effective is this action likely to be based on you and your stakeholders’ knowledge? What is the overall certainty (reliability) of this knowledge?")),
                          br(),
                          paste("We use the term ‘undocumented knowledge’ for the purposes of this tool to specify information that is not published or written down, which typically includes a knowledge holder’s intuition, experience, wisdom, and values (also known as ‘tacit’ knowledge).
@@ -409,13 +448,13 @@ server <- function(input, output, session) {
                          br(),
                          br(),
                          fixedRow(
-                           column(tippy("<strong> Undocumented knowledge </strong>", tooltip = '<p style="font-size:15px"> e.g., The last ranger sent me a photo and some notes on a previous trial of a tunnel under the old road, that has since been resurfaced and rerouted, when it was first built did not record any Natterjack toads using it over a two year period. I have never seen them use any Natterjack toads using tunnels and culverts in other places on this reserve. </p>', allowHTML=TRUE,placement="top"),
-                                  textAreaInput(paste0("action12",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
+                           column(tippy("<strong> Undocumented knowledge </strong>", tooltip = '<p style="font-size:15px"> e.g., I have never seen any Natterjack toads using tunnels and culverts in other places on this reserve. </p>', allowHTML=TRUE,placement="top"),
+                                  textAreaInput(paste0("action12b",id),label=NULL,width="200%",height="200%",rows=2),width=12)),
                          br(),
-                         fixedRow(column(width=12,tippy("<h4> Score effectiveness based on scientific literature and undocumented knowledge </h4>", tooltip = '<p style="font-size:15px">Please select a score based on the evidence gathered. Note you should only consider effectiveness in terms of the focal target (i.e., harmful means harmful to the focal target, not more widely - side-effects are considered later).</p>', allowHTML=TRUE,placement="top"),
-                                         radioButtons(paste0("actioneff",id),choices=c("Harmful","Ineffective","Weakly effective","Moderately effective","Highly effective","Trade-off between benefits and harms","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
+                         fixedRow(column(width=12,tippy("<h4> Score effectiveness based on undocumented knowledge </h4>", tooltip = '<p style="font-size:15px">Please select a score based on the evidence gathered. Note you should only consider effectiveness in terms of the focal target (i.e., harmful means harmful to the focal target, not more widely - side-effects are considered later).</p>', allowHTML=TRUE,placement="top"),
+                                         radioButtons(paste0("actioneffknow",id),choices=c("Harmful","Ineffective","Weakly effective","Moderately effective","Highly effective","Trade-off between benefits and harms","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                          fixedRow(column(width=12,tippy("<strong> Score certainty in this score </strong>", tooltip = '<p style="font-size:15px">Please select a score based on your confidence in the score you have given (and the evidence gathered).</p>', allowHTML=TRUE,placement="top"),
-                                         radioButtons(paste0("actioneffcert",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
+                                         radioButtons(paste0("actioneffcertknow",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                          br(),
                          h4("2.C. Assess costs, risks, and wider benefits"),
                          h4("2.C.i. Assess financial and resource-based cost-effectiveness"),
@@ -430,6 +469,7 @@ server <- function(input, output, session) {
                                          radioButtons(paste0("actioncost1",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
                          fixedRow(column(width=12,tippy("<strong> Score certainty in this score </strong>", tooltip = '<p style="font-size:15px">Please select a score based on your confidence in the score you have given (and the evidence gathered).</p>', allowHTML=TRUE,placement="top"),
                                          radioButtons(paste0("actioncost1cert",id),choices=c("Very low","Low","Moderate","High","Unsure"),selected="Unsure",inline=TRUE,label=NULL,width="200%"))),
+                         br(),
                          h4("2.C.ii. Assess the non-financial costs, risks, and wider benefits for non-target species, habitats, and stakeholders"),
                          em(strong("What are the wider non-financial costs, risks, and wider benefits of implementing this action?")),
                          p("Non-financial costs and wider benefits are the wider undesirable and desirable effects of the action on species, habitats, and stakeholders that are not the focus of the action. Costs may include socio-cultural considerations if the action did not target socio-cultural outcomes; for example, considering whether using pesticides, excluding access, or removing invasive species may have 'reputational costs' to the practitioner, stakeholders, or their organisations (i.e., has a negative impact on how they are perceived by the general public or other groups). "),
@@ -504,15 +544,19 @@ server <- function(input, output, session) {
     if(length(idlist)>0){
       actnames<-lapply(1:length(idlist),
                        function(i){data.table("Action"=idlist[i],
-                                              "Local Effectiveness"=input[[glue("actioneff",idlist[i])]],
+                                              "Local Effectiveness (scientific literature)"=input[[glue("actioneff",idlist[i])]],
+                                              "Local Effectiveness (own data & monitoring)"=input[[glue("actioneffown",idlist[i])]],
+                                              "Local Effectiveness (undocumented knowledge)"=input[[glue("actioneffknow",idlist[i])]],
                                               "Cost-effectiveness"=input[[glue("actioncost1",idlist[i])]],
-                                              "Balance between wider non-target costs, risks, and benefits"=input[[glue("actioncost2",idlist[i])]],
+                                              "Wider costs, risks, & benefits"=input[[glue("actioncost2",idlist[i])]],
                                               "Acceptability"=input[[glue("actionacc",idlist[i])]],
                                               "Feasibility"=input[[glue("actionfeas",idlist[i])]],
                                               "Modification potential"=input[[glue("actionmod",idlist[i])]],
-                                              "Local Effectiveness Certainty"=input[[glue("actioneffcert",idlist[i])]],
+                                              "Local Effectiveness Certainty (scientific literature)"=input[[glue("actioneffcert",idlist[i])]],
+                                              "Local Effectiveness Certainty (own data & monitoring)"=input[[glue("actioneffcertown",idlist[i])]],
+                                              "Local Effectiveness Certainty (undocumented knowledge)"=input[[glue("actioneffcertknow",idlist[i])]],
                                               "Cost-effectiveness Certainty"=input[[glue("actioncost1cert",idlist[i])]],
-                                              "Balance between wider non-target costs, risks, and benefits Certainty"=input[[glue("actioncost2cert",idlist[i])]],
+                                              "Wider costs, risks, & benefits Certainty"=input[[glue("actioncost2cert",idlist[i])]],
                                               "Acceptability Certainty"=input[[glue("actionacccert",idlist[i])]],
                                               "Feasibility Certainty"=input[[glue("actionfeascert",idlist[i])]],
                                               "Modification potential Certainty"=input[[glue("actionmodcert",idlist[i])]]
@@ -528,19 +572,21 @@ server <- function(input, output, session) {
                 fixedHeader = TRUE,
                 scrolly = TRUE,
                 colReorder = TRUE,
-                columnDefs = list(list(className = 'dt-center', targets = 0:6),list(visible=FALSE,targets=7:12)) # columns aligment to center, javascript starts at 0 not 1!
+                columnDefs = list(list(className = 'dt-center', targets = 0:8),list(visible=FALSE,targets=9:16)) # columns aligment to center, javascript starts at 0 not 1!
               )
               
-    ) %>% formatStyle(columns="Local Effectiveness", valueColumns="Local Effectiveness Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
-     formatStyle(columns="Cost-effectiveness", valueColumns="Cost-effectiveness Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
-      formatStyle(columns="Balance between wider non-target costs, risks, and benefits", valueColumns="Balance between wider non-target costs, risks, and benefits Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
-        formatStyle(columns="Acceptability", valueColumns="Acceptability Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
-          formatStyle(columns="Feasibility", valueColumns="Feasibility Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
-            formatStyle(columns="Modification potential", valueColumns="Modification potential Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))
+    ) %>% formatStyle(columns="Local Effectiveness (scientific literature)", valueColumns="Local Effectiveness Certainty (scientific literature)", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+      formatStyle(columns="Local Effectiveness (own data & monitoring)", valueColumns="Local Effectiveness Certainty (own data & monitoring)", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+        formatStyle(columns="Local Effectiveness (undocumented knowledge)", valueColumns="Local Effectiveness Certainty (undocumented knowledge)", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+          formatStyle(columns="Cost-effectiveness", valueColumns="Cost-effectiveness Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+            formatStyle(columns="Wider costs, risks, & benefits", valueColumns="Wider costs, risks, & benefits Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+              formatStyle(columns="Acceptability", valueColumns="Acceptability Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+                formatStyle(columns="Feasibility", valueColumns="Feasibility Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+                  formatStyle(columns="Modification potential", valueColumns="Modification potential Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))
     }
   else{
-    table1 <- data.frame(cbind(rep("Start assessing actions in the tool to display a summary output here."),"","","","","",""))
-    colnames(table1)<- c("Action","Local Effectiveness", "Cost-effectiveness", "Balance between wider non-target costs, risks, and benefits", "Acceptability","Feasibility","Modification potential")
+    table1 <- data.frame(cbind(rep("Start assessing actions in the tool to display a summary output here."),"","","","","","","",""))
+    colnames(table1)<- c("Action","Local Effectiveness (scientific literature)","Local Effectiveness (own data & monitoring)","Local Effectiveness (undocumented knowledge)", "Cost-effectiveness", "Wider costs, risks, & benefits", "Acceptability","Feasibility","Modification potential")
     datatable(table1,rownames=FALSE,height="100%",
               extensions=c('ColReorder','Responsive','FixedHeader'),
               options = list(searching=FALSE, paging=FALSE, info=FALSE,
@@ -621,8 +667,11 @@ server <- function(input, output, session) {
                cat("#### Evidence sources considered  \n",input[[glue("action09",idlist[i])]],"  \n  \n")
                cat("#### Detailed assessment of evidence  \n",input[[glue("action10",idlist[i])]],"  \n  \n")
                cat("#### Summarise assessment of scientific evidence  \n",input[[glue("action11",idlist[i])]],"  \n  \n  \n")
-               cat("### Undocumented knowledge  \n",input[[glue("action12",idlist[i])]],"  \n  \n")
-               cat("#### Assessment of effectiveness  \n","Score: ",input[[glue("actioneff",idlist[i])]],"  \n  \n","Certainty: ", input[[glue("actioneffcert",idlist[i])]],"  \n  \n  \n")
+               cat("#### Assessment of effectiveness from scientific literature  \n","Score: ",input[[glue("actioneff",idlist[i])]],"  \n  \n","Certainty: ", input[[glue("actioneffcert",idlist[i])]],"  \n  \n  \n")
+               cat("### Own data, written experience, and monitoring  \n",input[[glue("action12a",idlist[i])]],"  \n  \n")
+               cat("#### Assessment of effectiveness from own data/monitoring  \n","Score: ",input[[glue("actioneffown",idlist[i])]],"  \n  \n","Certainty: ", input[[glue("actioneffcertown",idlist[i])]],"  \n  \n  \n")
+               cat("### Undocumented knowledge  \n",input[[glue("action12b",idlist[i])]],"  \n  \n")
+               cat("#### Assessment of effectiveness from undocumented knowledge  \n","Score: ",input[[glue("actioneffknow",idlist[i])]],"  \n  \n","Certainty: ", input[[glue("actioneffcertknow",idlist[i])]],"  \n  \n  \n")
                cat("## Costs and risks  \n")
                cat("### Financial and resource-based costs  \n",input[[glue("action13",idlist[i])]],"  \n  \n")
                cat("#### Assessment of cost-effectiveness  \n","Score: ",input[[glue("actioncost1",idlist[i])]],"  \n  \n","Certainty: ",input[[glue("actioncost1cert",idlist[i])]],"  \n  \n  \n")

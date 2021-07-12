@@ -60,13 +60,23 @@ On Conservation Evidence, thirty-two studies investigated the effectiveness of i
 #### Summarise assessment of scientific evidence
 This action was assessed as being a trade-off between beneficial and harmful on Conservation Evidence by a panel of subject experts. There seems to be variable use of culverts and tunnels by differences species, and in some cases, depending on the design of culverts and tunnels, amphibians can become trapped and die. The evidence base is not that strong and there is clearly uncertainty over whether culverts and tunnels do more harm than good.
 
-
-### Undocumented knowledge
-The last ranger sent me a report suggesting that a previous trial of a tunnel under the old road, that has since been resurfaced and rerouted, when it was first built didn't record any Natterjack toads using it over a two year period. I have never seen them use any Natterjack toads using tunnels and culverts in other places on this reserve.
-
-#### Assessment of effectiveness based on scientific literature and undocumented knowledge
+#### Assessment of effectiveness based on scientific literature
 Score: Trade-off between benefits and harms.
 Certainty: Moderate.
+
+### Own data, written experience, and monitoring
+Our report suggests that a previous trial of a tunnel under the old road, that has since been resurfaced and rerouted, didn't record any Natterjack toads using it over a two year period.
+
+#### Assessment of effectiveness based on own data, written experience, and monitoring
+Score: Ineffective.
+Certainty: Moderate.
+
+### Undocumented knowledge
+I have never seen any Natterjack toads using tunnels and culverts in other places on this reserve.
+
+#### Assessment of effectiveness based on undocumented knowledge
+Score: Ineffective.
+Certainty: Low.
 
 
 ## Costs
@@ -140,11 +150,21 @@ Seven of eight studies (including one replicated and two controlled studies) in 
 #### Summarise assessment of scientific evidence
 This action was assessed as being a trade-off between beneficial and harmful on Conservation Evidence by a panel of experts. There seems to be some evidence that barrier fencing helps to prevent road deaths, but it is very dependent on the length of fence and materials used. In some cases it can cause aggregations at the end of the fences and lead to substantial concentrations of road deaths.
 
+#### Assessment of effectiveness based on scientific literature
+Score: Trade-off between benefits and harms.
+Certainty: Low.
+
+### Own data, written experience, and monitoring
+In the past we have monitored where the major frog mortality on the road is concentrated, and that is in sections that do not already have major obstacles or fencing to frogs. So it is possible that the fencing could be concentrated here.
+
+#### Assessment of effectiveness based on own data, written experience, and monitoring
+Score: Moderately effective.
+Certainty: Low.
 
 ### Undocumented knowledge
-In the past we have monitored where the major frog mortality on the road is concentrated, and that is in sections that do not already have major obstacles or fencing to frogs. So it is possible that the fencing could be concentrated here. For this to be an effective action on the reserve, we would need to use a significant amount of fencing, of a sufficient height for this to work as I am sure Natterjack toads climb over great obstacles on the reserve. My experience with any kind of fencing for wildlife does agree with the scientific evidence that the material used is key to its success - this will be important to consider if implementing this action. 
+For this to be an effective action on the reserve, we would need to use a significant amount of fencing, of a sufficient height for this to work as I am sure Natterjack toads climb over great obstacles on the reserve. My experience with any kind of fencing for wildlife does agree with the scientific evidence that the material used is key to its success - this will be important to consider if implementing this action. 
 
-#### Assessment of effectiveness based on scientific literature and undocumented knowledge
+#### Assessment of effectiveness based on undocumented knowledge
 Score: Trade-off between benefits and harms.
 Certainty: Low.
 
@@ -221,13 +241,23 @@ Two studies (including one replicated study) in Italy and the UK found that desp
 #### Summarise assessment of scientific evidence
 This action was assessed as being a unlikely to be beneficial on Conservation Evidence by a panel of experts. Although many frogs are assisted in crossing roads, it does not seem like this action prevents enough road mortality to ultimately stop population declines.
 
-
-### Undocumented knowledge
-In the past frog and toad patrols have helped in the local area to save 1000s of amphibians based on reports from other reserves that I have seen, but that hasn't been accompanied by any change in the local population declines of Natterjack toads. The scale on which this would need to be conducted during the migration season is huge, even on the small section of road we are focused on, and I don't think we would be able to get enough volunteers to make any real difference to the number of road fatalities.
-
-#### Assessment of effectiveness based on scientific literature and undocumented knowledge
+#### Assessment of effectiveness based on scientific literature
 Score: Ineffective.
 Certainty: Low.
+
+### Own data, written experience, and monitoring
+Our monitoring data suggests that in the past frog and toad patrols have helped in the local area to save 1000s of amphibians, but that hasn't been accompanied by any change in the local population declines of Natterjack toads.
+
+#### Assessment of effectiveness based own data, written experience, and monitoring
+Score: Weakly effective.
+Certainty: Low.
+
+### Undocumented knowledge
+I think the scale on which this would need to be conducted during the migration season is huge, even on the small section of road we are focused on, and I don't think we would be able to get enough volunteers to make any real difference to the number of road fatalities.
+
+#### Assessment of effectiveness based on undocumented knowledge
+Score: Ineffective.
+Certainty: Moderate.
 
 
 ## Costs and risks
@@ -287,14 +317,14 @@ library(DT)
 library(webshot) 
 if(is.null(webshot:::find_phantom())){webshot::install_phantomjs()} 
     
-    actnames<-rbind(c("Install culverts or tunnels as road crossings","Trade-off between benefits and harms","Low","Trade-off between costs/risks and benefits","Low","Low","Moderate","Moderate","Moderate","Moderate","Moderate","High","Moderate"),
-                c("Install barrier fencing along roads","Trade-off between benefits and harms","Moderate","Costs/risks slightly greater","Moderate","High","Moderate","Low","Moderate","Low","Moderate","Moderate","Moderate"),
-                c("Use humans to assist migrating amphibians across roads","Ineffective","Moderate","Benefits slightly greater","Moderate","Moderate","Very low","Low","Moderate","Low","Moderate","Low","High"))
+    actnames<-rbind(c("Install culverts or tunnels as road crossings","Trade-off between benefits and harms","Ineffective","Ineffective","Low","Trade-off between costs/risks and benefits","Low","Low","Moderate","Moderate","Moderate","Low","Moderate","Moderate","Moderate","High","Moderate"),
+                c("Install barrier fencing along roads","Trade-off between benefits and harms","Moderately effective","Trade-off between benefits and harms","Moderate","Costs/risks slightly greater","Moderate","High","Moderate","Low","Low","Low","Moderate","Low","Moderate","Moderate","Moderate"),
+                c("Use humans to assist migrating amphibians across roads","Ineffective","Weakly effective","Ineffective","Moderate","Benefits slightly greater","Moderate","Moderate","Very low","Low","Low","Moderate","Moderate","Low","Moderate","Low","High"))
     
     table1 <- data.frame(actnames)
-    tablecolstocolour <- c("Local Effectiveness", "Cost-effectiveness", "Balance between wider non-target costs, risks, and benefits", "Acceptability","Feasibility","Modification potential")
-    colnames(table1)<- c("Action","Local Effectiveness", "Cost-effectiveness", "Balance between wider non-target costs, risks, and benefits", "Acceptability","Feasibility","Modification potential",
-                         "Local Effectiveness Certainty", "Cost-effectiveness Certainty", "Balance between wider non-target costs, risks, and benefits Certainty", "Acceptability Certainty","Feasibility Certainty","Modification potential Certainty")
+    tablecolstocolour <- c("Local Effectiveness (scientific literature)","Local Effectiveness (own data & monitoring)","Local Effectiveness (undocumented knowledge)", "Cost-effectiveness", "Wider costs, risks, & benefits", "Acceptability","Feasibility","Modification potential")
+    colnames(table1)<- c("Action","Local Effectiveness (scientific literature)","Local Effectiveness (own data & monitoring)","Local Effectiveness (undocumented knowledge)", "Cost-effectiveness", "Wider costs, risks, & benefits", "Acceptability","Feasibility","Modification potential",
+                         "Local Effectiveness Certainty (scientific literature)","Local Effectiveness Certainty (own data & monitoring)","Local Effectiveness Certainty (undocumented knowledge)", "Cost-effectiveness Certainty", "Wider costs, risks, & benefits Certainty", "Acceptability Certainty","Feasibility Certainty","Modification potential Certainty")
     colvalscert <-  c("#FFFFFF","#FFFFCC","#FFFF80","#FFCC00","#FFFFFF")
     colvalnames <- c("Very low","Low","Moderate","High","Unsure")
     datatable(table1,rownames=FALSE,height="100%",
@@ -303,12 +333,14 @@ if(is.null(webshot:::find_phantom())){webshot::install_phantomjs()}
                 fixedHeader = TRUE,
                 scrolly = TRUE,
                 colReorder = TRUE,
-                columnDefs = list(list(className = 'dt-center', targets = 0:6),list(visible=FALSE,targets=7:12)) # columns aligment to center, javascript starts at 0 not 1!
+                columnDefs = list(list(className = 'dt-center', targets = 0:8),list(visible=FALSE,targets=9:16)) # columns aligment to center, javascript starts at 0 not 1!
               )
               
-    ) %>% formatStyle(columns="Local Effectiveness", valueColumns="Local Effectiveness Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+    ) %>% formatStyle(columns="Local Effectiveness (scientific literature)", valueColumns="Local Effectiveness Certainty (scientific literature)", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+      formatStyle(columns="Local Effectiveness (own data & monitoring)", valueColumns="Local Effectiveness Certainty (own data & monitoring)", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+      formatStyle(columns="Local Effectiveness (undocumented knowledge)", valueColumns="Local Effectiveness Certainty (undocumented knowledge)", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
      formatStyle(columns="Cost-effectiveness", valueColumns="Cost-effectiveness Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
-      formatStyle(columns="Balance between wider non-target costs, risks, and benefits", valueColumns="Balance between wider non-target costs, risks, and benefits Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
+      formatStyle(columns="Wider costs, risks, & benefits", valueColumns="Wider costs, risks, & benefits Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
         formatStyle(columns="Acceptability", valueColumns="Acceptability Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
           formatStyle(columns="Feasibility", valueColumns="Feasibility Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))%>%
             formatStyle(columns="Modification potential", valueColumns="Modification potential Certainty", backgroundColor = styleEqual(colvalnames,colvalscert))
