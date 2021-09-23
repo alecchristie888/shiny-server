@@ -61,7 +61,7 @@ ui <- function(request){fluidPage(
                           br(),
                           tags$img(src="image3_new.png", width = 700, height = 780),
                           br(),
-                          p("This tool was created by Dr Alec Christie, University of Cambridge. Thank you to all the practitioners who took part in the co-design of this tool, including (in no particular order): Steve Weeks, Alison Ruyter, Rory Harding, and Paul Tinsley-Marshall from the Kent Wildlife Trust; Tom McPherson from Ingleby Farms (also for giving feedback on the manuscript); the Woodland Trust; Peoples’ Trust for Endangered Species; Jon Flanders and Winifred Frick at Bat Conservation International; David O’Brien at NatureScot; Kathy Wormald at Froglife; the Medway Valley Countryside Partnership; Sheffield & Rotherham Wildlife Trust; Bedfordshire, Buckinghamshire, and Oxfordshire Wildlife Trust; Catherine McNicol at Gloucestershire Wildlife Trust. Thanks to an anonymous reviewer and Nick Salafsky for their comments to improve the tool too. Finally, thanks to Harriet Downey, Matthew Grainger, Thomas White, Michael Winter, and William Sutherland for their help in producing the tool.")
+                          p("For acknowledgements and copyright information, please see the", a("homepage.", href="https://www.evidence2decisiontool.com", target="_blank"))
                           ),
                  tabPanel("1. Define the Decision Context",id="tab02",value='tab02_val',
                           em(strong("What is the problem and desired outcomes? What is the relevant ecological, physical, and social context underlying the decision?")),
