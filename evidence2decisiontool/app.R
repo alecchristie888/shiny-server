@@ -59,7 +59,7 @@ ui <- function(request){fluidPage(
                           paste("To begin using the tool, click on 1. Define the Decision Context. Throughout this tool you will be prompted to enter information which will be compiled and documented in a report which you will be able to download in the final step. (If you wish to see an example of what the tool produces, please go to tab 3. Make an Evidence-Based Decision and scroll to the bottom). Download the"), 
                           a("E2D Tool Guide", href="e2dguide.pdf", target="_blank"), paste("for extra guidance. Tips will also appear if you hover over the bold text directly above text boxes in the tool."),
                           br(),
-                          tags$img(src="image3_new.png", width = 700, height = 780),
+                          tags$img(src="image3_new.png", width = 700, height = 820),
                           br(),
                           p("For acknowledgements and copyright information, please see the", a("homepage.", href="https://www.evidence2decisiontool.com", target="_blank"))
                           ),
