@@ -1,6 +1,6 @@
 # shiny-server for the Evidence-to-Decision Tool
 
-The Evidence-to-Decision tool (E2D; www.evidence2decisiontool.com) is a The Evidence-to-Decision tool has been co-designed between Conservation Evidence and practitioners from several organisations to help guide practitioners through the process of making an evidence-based decision. The tool is structured to help you consider and combine several forms of evidence (e.g., scientific evidence, tacit knowledge, values, costs) to reach a transparent decision, documenting each stage of the process so that the logic and reasoning behind decisions can be open and traceable.
+The Evidence-to-Decision tool (E2D; www.evidence2decisiontool.com) has been co-designed between Conservation Evidence and practitioners from several organisations to help guide practitioners through the process of making an evidence-based decision. The tool is structured to help you consider and combine several forms of evidence (e.g., scientific evidence, tacit knowledge, values, costs) to reach a transparent decision, documenting each stage of the process so that the logic and reasoning behind decisions can be open and traceable.
 
 The tool is deployed online using a shiny app on an Open Source Shiny Server and hosted with a Digital Ocean droplet. 
 
