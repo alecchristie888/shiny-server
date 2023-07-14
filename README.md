@@ -25,3 +25,5 @@ There are two separate licenses, one for the open source code and one for the on
 The repository shiny-server is copyright (c) 2021 Alec Christie, but it is Open Source and licensed under the MIT License.
 
 The Evidence-to-Decision Tool (including its online implementation at www.evidence2decisiontool.com) by Alec P. Christie and Conservation Evidence is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (based on a work at https://github.com/alecchristie888/shiny-server). 
+
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
